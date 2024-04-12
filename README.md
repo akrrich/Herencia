@@ -12,7 +12,7 @@ Propuesta Estética [...]
 Propuesta Técnica [...]
 
 ## Build jugable
-
+[/Build/Herencia.zip](Build jugable v0.1)
 
 ### Integrantes
 Santiago Rodriguez | Santiago Guarino | Uma Ferracioli | Ivan Ramirez | Alesio Rojas | Luciano Pueyo
