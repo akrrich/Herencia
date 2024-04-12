@@ -5,7 +5,7 @@
 https://docs.google.com/presentation/d/12baL0MFSKqBOOPEiiaqP8W-qm6hhj5bZVpnK68nhMBM/edit?usp=sharing
 
 ## Pitch
-[...]
+https://docs.google.com/presentation/d/1fckZ7VdEQxPdFGiLHzmslB8YEftw4d1Ex-IEOu0olgc/
 
 ## Anexos
 Propuesta Estética [...]
