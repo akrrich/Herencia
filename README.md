@@ -11,6 +11,9 @@ https://docs.google.com/presentation/d/1fckZ7VdEQxPdFGiLHzmslB8YEftw4d1Ex-IEOu0o
 Propuesta Estética [...]
 Propuesta Técnica [...]
 
+## Build jugable
+
+
 ### Integrantes
 Santiago Rodriguez | Santiago Guarino | Uma Ferracioli | Ivan Ramirez | Alesio Rojas | Luciano Pueyo
 
