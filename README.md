@@ -1,5 +1,5 @@
 # Herencia
-[Descripción corta del juego]
+juego de acción 2D top down que sigue la historia de un moderno Victor en busca de respuestas sobre su propia naturaleza.
 
 ## High Concept & High Level Plan
 https://docs.google.com/presentation/d/12baL0MFSKqBOOPEiiaqP8W-qm6hhj5bZVpnK68nhMBM/edit?usp=sharing
