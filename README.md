@@ -4,7 +4,17 @@
 ## High Concept
 https://docs.google.com/presentation/d/12baL0MFSKqBOOPEiiaqP8W-qm6hhj5bZVpnK68nhMBM/edit?usp=sharing
 
-## Integrantes
+## High Level Plan
+[...]
+
+## Pitch
+[...]
+
+## Anexos
+Propuesta Estética [...]
+Propuesta Técnica [...]
+
+### Integrantes
 Santiago Rodriguez | Santiago Guarino | Uma Ferracioli | Ivan Ramirez | Alesio Rojas | Luciano Pueyo
 
 ##
