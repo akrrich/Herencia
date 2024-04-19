@@ -8,8 +8,8 @@ https://docs.google.com/presentation/d/12baL0MFSKqBOOPEiiaqP8W-qm6hhj5bZVpnK68nh
 https://docs.google.com/presentation/d/1fckZ7VdEQxPdFGiLHzmslB8YEftw4d1Ex-IEOu0olgc/
 
 ## Anexos
-Propuesta Estética [...]
-Propuesta Técnica [...]
+### Propuesta Estética: https://docs.google.com/presentation/d/1Cz5N3OaPJLjmKCDMmW7tQ6nxTnRTCHB3LH7B-8rH5q4/edit?usp=sharing
+### Propuesta Técnica [...]
 
 ## Build jugable
 [Build jugable v0.1](https://github.com/akrrich/ProduccionDeVideojuegos/blob/main/Build/Herencia.zip)
