@@ -11,7 +11,7 @@ https://docs.google.com/presentation/d/1fckZ7VdEQxPdFGiLHzmslB8YEftw4d1Ex-IEOu0o
 ### Propuesta Estética:
 https://docs.google.com/presentation/d/1Cz5N3OaPJLjmKCDMmW7tQ6nxTnRTCHB3LH7B-8rH5q4/edit?usp=sharing
 ### Propuesta Técnica
-https://docs.google.com/presentation/d/1vkAz1PJVzJ3e4Y9jGqFsJ7uV8qQqRko8fPoq2ogIbbU/edit?usp=sharing
+https://docs.google.com/document/d/1aknShFHrOtZ9g9Md1bW9l3HVyScfDd_DHZEjovmKb1U/edit?usp=sharing
 
 ## Build jugable
 [Build jugable v0.1](https://github.com/akrrich/ProduccionDeVideojuegos/blob/main/Build/Herencia.zip)
