@@ -17,7 +17,7 @@ https://docs.google.com/presentation/d/1oqwn6sbKOKql7n4UsS4GzdcAzpX8qsI5v18VTWxw
 ### Trello
 https://trello.com/b/nxzARTqj/herencia-tareas-pendientes
 ## Build jugable
-[Build jugable v0.1](https://github.com/akrrich/ProduccionDeVideojuegos/blob/main/Build/Herencia.zip)
+[Build jugable v0.2](https://github.com/akrrich/ProduccionDeVideojuegos/blob/main/Build/Herencia.zip)
 
 ### Integrantes
 Santiago Rodriguez | Santiago Guarino | Uma Ferracioli | Ivan Ramirez | Alesio Rojas | Luciano Pueyo
