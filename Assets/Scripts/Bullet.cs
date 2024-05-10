@@ -30,17 +30,18 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.isTrigger)
+        if (collision.gameObject.CompareTag("Enemy"))
         {
+            GameObject go = collision.gameObject;
+            var pc = go.GetComponent<DeformeController>();
+            pc.Die();
             return;
         }
-
-        for (int i = 0; i < allTags.Length; i++)
+        
+        
+        if(collision.gameObject.CompareTag("Wall"))
         {
-            if (collision.gameObject.CompareTag(allTags[i]))
-            {
-                Destroy(this.gameObject);
-            }
+            Destroy(this.gameObject);
         }
     }
 }

@@ -8,6 +8,7 @@ TagManager:
   - Tile Map Colliders
   - Main Char Bullet
   - Enemy
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -44,4 +45,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Floor
+    uniqueID: 3003808423
+    locked: 0
+  - name: Walls
+    uniqueID: 2727816431
+    locked: 0
+  - name: Items
+    uniqueID: 645718101
+    locked: 0
+  - name: Player
+    uniqueID: 1798491405
+    locked: 0
+  - name: Bullets
+    uniqueID: 3384403399
     locked: 0

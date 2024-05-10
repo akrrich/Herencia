@@ -28,7 +28,7 @@ public class MainCharacter : MonoBehaviour
 
     private float shield = 0;
 
-    private float characterSpeed = 5f;
+    private float characterSpeed = 10f;
     
     private float bulletSpeed = 15f;
 
@@ -161,7 +161,7 @@ public class MainCharacter : MonoBehaviour
     private void movements()
     {
         rb.velocity = Vector2.zero;
-
+        /*
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
         {
             float verticalInput = Input.GetKey(KeyCode.W) ? 1 : -1;
@@ -173,6 +173,17 @@ public class MainCharacter : MonoBehaviour
             float horizontalInput = Input.GetKey(KeyCode.D) ? 1 : -1;
             rb.velocity += horizontalInput * characterSpeed * Vector2.right;
         }
+        */
+
+        Vector2 movement = new Vector2(Input.GetAxisRaw("Vertical"), Input.GetAxisRaw("Horizontal")).normalized;
+
+        rb.velocity += movement.x * characterSpeed * Vector2.up;
+        rb.velocity += movement.y * characterSpeed * Vector2.right;
+        /*
+        float x = Input.GetAxis("Horizontal");
+        float y = Input.GetAxis("Vertical");
+
+        rb.AddForce(new Vector2(x * characterSpeed, y * characterSpeed));*/
     }
     
     private void Shoot()
