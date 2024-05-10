@@ -60,7 +60,10 @@ public class Chest : MonoBehaviour
     {
         if (triggerCollider.gameObject.CompareTag("Player"))
         {
-            musicChest.Play();
+            if (canInteractWithChest == true)
+            {
+                musicChest.Play();
+            }
         }
     }
 

@@ -72,6 +72,7 @@ public class MainMenuButtons : MonoBehaviour
         timeForSoundExit = true;
     }
 
+
     private void ExitMenuWithKey()
     {
         if (Input.GetKeyUp(KeyCode.Escape))
