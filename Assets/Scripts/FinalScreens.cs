@@ -59,18 +59,6 @@ public class FinalScreens : MonoBehaviour
     }
 
 
-    public void InteractWithButton(bool soundPlaying, AudioSource soundOption, bool buttonActive, Button button)
-    {
-        if (soundPlaying == false)
-        {
-            soundOption.Play();
-            soundPlaying = true;
-            buttonActive = true;
-
-            button.transition = Selectable.Transition.None;
-        }
-    }
-
     public void InteractWithPlayAgainButton()
     {
         if (isSoundPlaying == false)

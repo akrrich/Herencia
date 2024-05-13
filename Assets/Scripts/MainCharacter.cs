@@ -154,36 +154,18 @@ public class MainCharacter : MonoBehaviour
     {
         if (life <= 0)
         {
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
     }
 
     private void movements()
     {
         rb.velocity = Vector2.zero;
-        /*
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
-        {
-            float verticalInput = Input.GetKey(KeyCode.W) ? 1 : -1;
-            rb.velocity += verticalInput * characterSpeed * Vector2.up;
-        }
-
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
-        {
-            float horizontalInput = Input.GetKey(KeyCode.D) ? 1 : -1;
-            rb.velocity += horizontalInput * characterSpeed * Vector2.right;
-        }
-        */
 
         Vector2 movement = new Vector2(Input.GetAxisRaw("Vertical"), Input.GetAxisRaw("Horizontal")).normalized;
 
         rb.velocity += movement.x * characterSpeed * Vector2.up;
         rb.velocity += movement.y * characterSpeed * Vector2.right;
-        /*
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
-
-        rb.AddForce(new Vector2(x * characterSpeed, y * characterSpeed));*/
     }
     
     private void Shoot()
@@ -215,7 +197,6 @@ public class MainCharacter : MonoBehaviour
         return message;
     }
 
-    // funcion para restar salud segun condicion
     private void CheckIfHasLifeOrShield()
     {
         if (life > 0 && shield < 1)
