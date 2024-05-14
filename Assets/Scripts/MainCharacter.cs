@@ -17,11 +17,14 @@ public class MainCharacter : MonoBehaviour
 
     [SerializeField] private GameObject bulletPrefab;
 
-    [SerializeField] private AudioSource shoot;
+    [SerializeField] private AudioSource shootSound;
 
     [SerializeField] private Rigidbody2D rb;
 
     [SerializeField] private Animator anim;
+
+
+    [SerializeField] private ItemController item;
 
 
     private float life = 5;
@@ -93,6 +96,9 @@ public class MainCharacter : MonoBehaviour
         Shoot();
         CheckIfHasLifeOrShield();
         pruebaDeSliders();
+        IncreaseStatValue();
+
+        print(life);
     }
 
 
@@ -133,7 +139,7 @@ public class MainCharacter : MonoBehaviour
         }
     }
 
-    // funcion de prueba para la vida y escudo
+
     private void DamageReceived(float damage)
     {
         if (shield > 0)
@@ -149,6 +155,11 @@ public class MainCharacter : MonoBehaviour
         }
     }
 
+    private void IncreaseStatValue()
+    {
+        item.ChangeStatValue(life);
+        sliderLife.ChangeActualValue(life);
+    }
 
     private void DestroyMainCharacter()
     {
@@ -172,7 +183,7 @@ public class MainCharacter : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && canShoot == true)
         {
-            shoot.Play();
+            shootSound.Play();
 
             canShoot = false;
             counterForShoot = 0;
@@ -190,11 +201,6 @@ public class MainCharacter : MonoBehaviour
             bulletRigidbody.gravityScale = 0f;
             bulletRigidbody.velocity = shootDirection * bulletSpeed;
         }
-    }
-
-    public string tergo(string message)
-    {
-        return message;
     }
 
     private void CheckIfHasLifeOrShield()
