@@ -96,8 +96,6 @@ public class MainCharacter : MonoBehaviour
         Shoot();
         CheckIfHasLifeOrShield();
         pruebaDeSliders();
-        IncreaseStatValue();
-
         print(life);
     }
 
@@ -155,9 +153,9 @@ public class MainCharacter : MonoBehaviour
         }
     }
 
-    private void IncreaseStatValue()
+    public void IncreaseLife(float amount)
     {
-        item.ChangeStatValue(life);
+        this.life += amount;
         sliderLife.ChangeActualValue(life);
     }
 

@@ -12,9 +12,7 @@ public class ItemController : MonoBehaviour
 
     private SpriteRenderer itemRenderer;
 
-
     private float counter = 0f;
-
 
     private bool activeItem = false;
 
@@ -22,6 +20,7 @@ public class ItemController : MonoBehaviour
 
     private bool activeCounterForDestroItem = false;
 
+    [SerializeField] private float amount;
 
     private void Start()
     {
@@ -53,16 +52,20 @@ public class ItemController : MonoBehaviour
             activeItem = true;
 
             activeCounterForDestroItem = true;
+
+            GameObject go = collision.gameObject;
+            var player = go.GetComponent<MainCharacter>();
+
+            player.IncreaseLife(amount);
+
         }
     }
 
 
-    public void ChangeStatValue(float statVlue)
+    public void ChangeStatValue()
     {
         if (activeItem == true)
-        {
-            statVlue ++;
-
+        { 
             activeItem = false;
         }
     }
