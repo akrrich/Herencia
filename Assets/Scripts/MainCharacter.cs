@@ -6,13 +6,22 @@ using UnityEngine.Events;
 
 public class MainCharacter : MonoBehaviour
 {
-    [SerializeField] private HudAllSliders sliderLife;
+    [SerializeField] private SliderController sliderLife;
 
-    [SerializeField] private HudAllSliders sliderShield;
+    [SerializeField] private SliderController sliderShield;
 
-    [SerializeField] private HudAllSliders sliderCharacterSpeed;
+    [SerializeField] private SliderController sliderCharacterSpeed;
 
-    [SerializeField] private HudAllSliders sliderBulletSpeed;
+    [SerializeField] private SliderController sliderBulletSpeed;
+
+
+    [SerializeField] private ItemController itemLife;
+
+    [SerializeField] private ItemController itemShield;
+
+    [SerializeField] private ItemController itemCharacterSpeed;
+
+    [SerializeField] private ItemController itemBulletSpeed;
 
 
     [SerializeField] private GameObject bulletPrefab;
@@ -22,9 +31,6 @@ public class MainCharacter : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
 
     [SerializeField] private Animator anim;
-
-
-    [SerializeField] private ItemController item;
 
 
     private float life = 5;
@@ -76,8 +82,8 @@ public class MainCharacter : MonoBehaviour
         anim = GetComponent<Animator>();
 
         sliderLife.InitializeBarStat(life, 5);
-        sliderShield.InitializeBarStat(shield, 4);
-        sliderCharacterSpeed.InitializeBarStat(characterSpeed, 9);
+        sliderShield.InitializeBarStat(shield, 5);
+        sliderCharacterSpeed.InitializeBarStat(characterSpeed, 15);
         sliderBulletSpeed.InitializeBarStat(bulletSpeed, 20);
     }
 
@@ -94,11 +100,10 @@ public class MainCharacter : MonoBehaviour
         DestroyMainCharacter();
         movements();
         Shoot();
+        UpdateStatsAllTime();
+        IncreaseStatValue();
         CheckIfHasLifeOrShield();
         pruebaDeSliders();
-        IncreaseStatValue();
-
-        print(life);
     }
 
 
@@ -113,29 +118,21 @@ public class MainCharacter : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             life++;
-            sliderLife.ChangeActualValue(life);
-            sliderLife.LimitValue(ref life, 5, 1, 0);
         }
 
         if (Input.GetKeyDown(KeyCode.K))
         {
             shield++;
-            sliderShield.ChangeActualValue(shield);
-            sliderShield.LimitValue(ref shield, 5, 1, 0);
         }
 
         if (Input.GetKeyDown(KeyCode.L))
         {
             characterSpeed += 0.25f;
-            sliderCharacterSpeed.ChangeActualValue(characterSpeed);
-            sliderCharacterSpeed.LimitValue(ref characterSpeed, 9, 5, 5);
         }
 
         if (Input.GetKeyDown(KeyCode.O))
         {
             bulletSpeed += 0.30f;
-            sliderBulletSpeed.ChangeActualValue(bulletSpeed);
-            sliderBulletSpeed.LimitValue(ref bulletSpeed, 20, 15, 15);
         }
     }
 
@@ -145,25 +142,41 @@ public class MainCharacter : MonoBehaviour
         if (shield > 0)
         {
             shield -= damage;
-            sliderShield.ChangeActualValue(shield);
         }
 
         else
         {
             life -= damage;
-            sliderLife.ChangeActualValue(life);
         }
     }
 
+    private void UpdateStatsAllTime()
+    {
+        sliderLife.ChangeActualValue(life);
+        sliderLife.LimitValue(ref life, 5, 1, 0);
+
+        sliderShield.ChangeActualValue(shield);
+        sliderShield.LimitValue(ref shield, 5, 1, 0);
+
+        sliderCharacterSpeed.ChangeActualValue(characterSpeed);
+        sliderCharacterSpeed.LimitValue(ref characterSpeed, 15, 10, 10);
+
+        sliderBulletSpeed.ChangeActualValue(bulletSpeed);
+        sliderBulletSpeed.LimitValue(ref bulletSpeed, 20, 15, 15);
+    }
+
+
     private void IncreaseStatValue()
     {
-        item.ChangeStatValue(life);
-        sliderLife.ChangeActualValue(life);
+        itemLife.ChangeStatValue(ref life);
+        itemShield.ChangeStatValue(ref shield);
+        itemCharacterSpeed.ChangeStatValue(ref characterSpeed);
+        itemBulletSpeed.ChangeStatValue(ref bulletSpeed);
     }
 
     private void DestroyMainCharacter()
     {
-        if (life <= 0)
+        if (life < 1)
         {
             this.gameObject.SetActive(false);
         }

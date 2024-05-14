@@ -324,7 +324,7 @@ MonoBehaviour:
   triggerCollider: {fileID: 6280995622229490938}
   musicChest: {fileID: 1837724460555987483}
   soundOpenChest: {fileID: 4745455173144571603}
-  spriteRendererCloseChest: {fileID: 0}
+  spriteRendererCloseChest: {fileID: 5732408077612141420}
 --- !u!82 &1837724460555987483
 AudioSource:
   m_ObjectHideFlags: 0

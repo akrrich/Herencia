@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HudAllSliders : MonoBehaviour
+public class SliderController : MonoBehaviour
 {
     [SerializeField] private Slider slider;
 

@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
     {
         if (life < 1)
         {
-            enemy.SetActive(true);
+            enemy.SetActive(false);
         }
     }
 

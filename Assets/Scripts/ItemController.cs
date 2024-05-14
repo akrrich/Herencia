@@ -13,14 +13,7 @@ public class ItemController : MonoBehaviour
     private SpriteRenderer itemRenderer;
 
 
-    private float counter = 0f;
-
-
     private bool activeItem = false;
-
-    private bool activeItemSound = false;
-
-    private bool activeCounterForDestroItem = false;
 
 
     private void Start()
@@ -31,17 +24,12 @@ public class ItemController : MonoBehaviour
     }
 
 
-    private void Update()
-    {
-        PlaySound();
-        DestroyItem();
-    }
-
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            itemGrabSound.Play();
+
             Destroy(boxCollider);
 
             Color newColor = itemRenderer.color;
@@ -49,45 +37,20 @@ public class ItemController : MonoBehaviour
 
             itemRenderer.color = newColor;
 
-            activeItemSound = true;
             activeItem = true;
 
-            activeCounterForDestroItem = true;
+            Destroy(this.gameObject, 1.5f);
         }
     }
 
 
-    public void ChangeStatValue(float statVlue)
+    public void ChangeStatValue(ref float statVlue)
     {
         if (activeItem == true)
         {
             statVlue ++;
 
             activeItem = false;
-        }
-    }
-
-
-    private void PlaySound()
-    {
-        if (activeItemSound == true)
-        {
-            itemGrabSound.Play();
-
-            activeItemSound = false;
-        }
-    }
-
-    private void DestroyItem()
-    {
-        if (activeCounterForDestroItem == true)
-        {
-            counter += Time.deltaTime;
-
-            if (counter > 0.5f)
-            {
-                Destroy(this.gameObject);
-            }
         }
     }
 }

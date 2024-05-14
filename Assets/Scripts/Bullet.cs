@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
 {
     private Enemy enemy;
 
-    private string[] allTags = {"Chest", "Tile Map Colliders"};
+    private string[] allTags = {"Chest", "Tile Map Colliders, Enemy"};
 
 
     private void OnCollisionEnter2D(Collision2D collision)
