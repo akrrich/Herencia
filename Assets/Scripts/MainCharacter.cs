@@ -46,6 +46,7 @@ public class MainCharacter : MonoBehaviour
 
 
     private bool canShoot = true;
+    public bool canShootAllTime = true;
 
     private bool hasLife = true;
     private bool hasShield = false;
@@ -194,7 +195,7 @@ public class MainCharacter : MonoBehaviour
     
     private void Shoot()
     {
-        if (Input.GetMouseButtonDown(0) && canShoot == true)
+        if (Input.GetMouseButtonDown(0) && canShoot == true && canShootAllTime == true)
         {
             shootSound.Play();
 

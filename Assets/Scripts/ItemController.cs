@@ -48,7 +48,7 @@ public class ItemController : MonoBehaviour
     {
         if (activeItem == true)
         {
-            statVlue ++;
+            statVlue++;
 
             activeItem = false;
         }
