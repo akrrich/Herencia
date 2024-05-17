@@ -26,11 +26,12 @@ public class MainCharacter : MonoBehaviour
 
     [SerializeField] private GameObject bulletPrefab;
 
-    [SerializeField] private AudioSource shootSound;
 
-    [SerializeField] private Rigidbody2D rb;
+    private AudioSource shootSound;
 
-    [SerializeField] private Animator anim;
+    private Rigidbody2D rb;
+
+    private Animator anim;
 
 
     private float life = 5;
@@ -46,7 +47,7 @@ public class MainCharacter : MonoBehaviour
 
 
     private bool canShoot = true;
-    public bool canShootAllTime = true;
+    private bool canShootAllTime = true;
 
     private bool hasLife = true;
     private bool hasShield = false;
@@ -74,6 +75,19 @@ public class MainCharacter : MonoBehaviour
         {
             return life;
         }
+
+        set
+        {
+            life = value;
+        }
+    }
+
+    public bool CanShootAllTime
+    {
+        set
+        {
+            canShootAllTime = value;
+        }
     }
 
 
@@ -81,6 +95,7 @@ public class MainCharacter : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        shootSound = GetComponent<AudioSource>();
 
         sliderLife.InitializeBarStat(life, 5);
         sliderShield.InitializeBarStat(shield, 5);
@@ -89,7 +104,7 @@ public class MainCharacter : MonoBehaviour
     }
 
 
-    void Update()
+    private void Update()
     {
         counterForShoot += Time.deltaTime;
 
@@ -165,7 +180,6 @@ public class MainCharacter : MonoBehaviour
         sliderBulletSpeed.ChangeActualValue(bulletSpeed);
         sliderBulletSpeed.LimitValue(ref bulletSpeed, 20, 15, 15);
     }
-
 
     private void IncreaseStatValue()
     {

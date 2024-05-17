@@ -7,9 +7,12 @@ public class GameManager : MonoBehaviour
     private float spawnTime = 1.5f;
     private float timeCounter = 0;
 
+
     [SerializeField] DeformeController deforme;
     [SerializeField] Transform spawnPoint;
     [SerializeField] GameObject player;
+
+
     private void Update()
     {
         timeCounter += Time.deltaTime;

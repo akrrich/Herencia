@@ -9,10 +9,10 @@ public class FinalScreens : MonoBehaviour
     [SerializeField] private MainCharacter mainCharacter;
 
 
-    private AudioSource optionSound;
-
     [SerializeField] private AudioSource defeatSound;
     [SerializeField] private AudioSource winSound;
+
+    private AudioSource optionSound;
 
 
     private Button buttonPlayAgain;
@@ -36,9 +36,13 @@ public class FinalScreens : MonoBehaviour
     private bool isSoundPlaying = false;
 
 
+    private string sceneInGameName = "SceneInGame";
+    private string sceneMenuName = "Name";
+
+
     private void Start()
     { 
-        optionSound = transform.Find("").GetComponent<AudioSource>();
+        optionSound = GetComponent<AudioSource>();
 
         buttonPlayAgain = transform.Find("Button Play Again").GetComponent<Button>();
         buttonBackToMenu = transform.Find("Button Back To Menu").GetComponent<Button>();
@@ -52,7 +56,8 @@ public class FinalScreens : MonoBehaviour
 
     private void Update()
     {
-        ConditionForChangeScene();
+        ConditionForChangeScenes(PlayButtonActive, countForPlayButton, sceneInGameName);
+        ConditionForChangeScenes(BackButtonActive, countForBackButton, sceneMenuName);
 
         DefeatScreen();
         WinScreen();
@@ -71,7 +76,6 @@ public class FinalScreens : MonoBehaviour
         }
     }
 
-
     public void InteractWithBackToMenuButton()
     {
         if (isSoundPlaying == false) 
@@ -83,6 +87,7 @@ public class FinalScreens : MonoBehaviour
             buttonBackToMenu.transition = Selectable.Transition.None;
         }
     }
+
 
     private void DefeatScreen()
     {
@@ -113,33 +118,21 @@ public class FinalScreens : MonoBehaviour
         backToMenu.SetActive(true);
     }
 
-
     private void ActiveFinalSound(AudioSource finalAudio)
     {
         finalAudio.Play();
     }
 
-
-    private void ConditionForChangeScene()
+    private void ConditionForChangeScenes(bool buttonActive, float counterForButton, string nameScene)
     {
-        if (PlayButtonActive == true)
+        if (buttonActive == true)
         {
-            countForPlayButton += Time.deltaTime;
+            counterForButton += Time.deltaTime;
         }
 
-        if (BackButtonActive == true)
+        if (counterForButton > 0.35f)
         {
-            countForBackButton += Time.deltaTime;
-        }
-
-        if (countForBackButton > 0.35f)
-        {
-            SceneManager.LoadScene("Menu");
-        }
-
-        if (countForPlayButton > 0.35f)
-        {
-            SceneManager.LoadScene("SceneInGame");
+            SceneManager.LoadScene(nameScene);
         }
     }
 }
