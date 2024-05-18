@@ -8,9 +8,6 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private MainCharacter character;
 
 
-    [SerializeField] private GameObject pauseMenuImage;
-
-
     private bool gameInPause = false;
 
 
@@ -51,8 +48,6 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
-        pauseMenuImage.SetActive(true);
-
         character.CanShootAllTime = false;
 
         Time.timeScale = 0f;
@@ -62,8 +57,6 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
-        pauseMenuImage.SetActive(false);
-
         character.CanShootAllTime = true;
 
         Time.timeScale = 1f;

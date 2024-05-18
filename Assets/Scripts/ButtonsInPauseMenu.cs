@@ -10,10 +10,7 @@ public class ButtonsInPauseMenu : MonoBehaviour
 
     private AudioSource optionSound;
 
-    private GameObject buttonPauseGame;
-    private GameObject buttonResumeGame;
-    private GameObject buttonReturnMainMenu;
-    private GameObject buttonExitGame;
+    private GameObject panel;
 
 
     private void Start()
@@ -22,22 +19,13 @@ public class ButtonsInPauseMenu : MonoBehaviour
 
         optionSound = GetComponent<AudioSource>();
 
-        buttonPauseGame = transform.Find("Button Pause Game").gameObject;
-        buttonResumeGame = transform.Find("Button Resume Game").gameObject;
-        buttonReturnMainMenu = transform.Find("Button Main Menu").gameObject;
-        buttonExitGame = transform.Find("Button Exit").gameObject;
+        panel = transform.Find("panel").gameObject;
     }
 
 
     private void Update()
     {
         ButtonsStatus();
-    }
-
-
-    public void InteractWithPauseButton()
-    {
-        pauseMenu.PauseGame();
     }
 
     public void InteractWithResumeGameButton()
@@ -61,20 +49,6 @@ public class ButtonsInPauseMenu : MonoBehaviour
 
     private void ButtonsStatus()
     {
-        if (pauseMenu.GameInPause == false)
-        {
-            buttonPauseGame.SetActive(true);
-            buttonResumeGame.SetActive(false);
-            buttonReturnMainMenu.SetActive(false);
-            buttonExitGame.SetActive(false);
-        }
-
-        else
-        {
-            buttonPauseGame.SetActive(false);
-            buttonResumeGame.SetActive(true);
-            buttonReturnMainMenu.SetActive(true);
-            buttonExitGame.SetActive(true);
-        }
+        panel.SetActive(pauseMenu.GameInPause);
     }
 }
