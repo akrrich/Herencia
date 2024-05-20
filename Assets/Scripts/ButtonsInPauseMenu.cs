@@ -3,14 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEditor.ShaderKeywordFilter;
 
 public class ButtonsInPauseMenu : MonoBehaviour
 {
+    [SerializeField] private Button buttonMainMenu;
+    [SerializeField] private Button buttonExitGame;
+
+
     private PauseMenu pauseMenu;
 
     private AudioSource optionSound;
 
     private GameObject panel;
+
+
+    private float counterForMenu = 0f;
+    private float counterForExitGame = 0f;
+
+
+    private bool timeForSoundMenu = false;
+    private bool timeForExitGame = false;
+
+    private bool isSoundPlaying = false;
 
 
     private void Start()
@@ -25,25 +40,64 @@ public class ButtonsInPauseMenu : MonoBehaviour
 
     private void Update()
     {
+        if (timeForSoundMenu == true)
+        {
+            counterForMenu += Time.deltaTime;
+
+            if (counterForMenu > 0.35f)
+            {
+                SceneManager.LoadScene("Menu");
+            }
+        }
+
+        if (timeForExitGame == true) 
+        {
+            counterForExitGame += Time.deltaTime;
+
+            if (counterForExitGame > 0.35f)
+            {
+                UnityEditor.EditorApplication.isPlaying = false;
+
+                Application.Quit();
+            }
+        }
+
         ButtonsStatus();
     }
 
+
     public void InteractWithResumeGameButton()
     {
+        optionSound.Play();
+
         pauseMenu.ResumeGame();
     }
 
     public void InteractWithReturnMainMenuButton() 
     {
-        Time.timeScale = 1.0f;
-        SceneManager.LoadScene("Menu");
+        if (isSoundPlaying == false)
+        {
+            optionSound.Play();
+
+            isSoundPlaying = true;
+
+            Time.timeScale = 1f;
+
+            buttonMainMenu.transition = Selectable.Transition.None;
+        }
+
+        timeForSoundMenu = true;
     }
 
     public void InteractWithExitGameButton() 
     {
-        UnityEditor.EditorApplication.isPlaying = false;
+        optionSound.Play();
 
-        Application.Quit();
+        Time.timeScale = 1f;
+
+        buttonExitGame.transition = Selectable.Transition.None;
+
+        timeForExitGame = true;
     }
 
 

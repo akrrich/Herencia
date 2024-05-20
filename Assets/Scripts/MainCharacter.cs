@@ -46,11 +46,14 @@ public class MainCharacter : MonoBehaviour
     private float counterForShoot = 0;
 
 
+    private bool alive = true;
+
     private bool canShoot = true;
     private bool canShootAllTime = true;
 
     private bool hasLife = true;
     private bool hasShield = false;
+
 
 
     public Rigidbody2D Rb
@@ -69,24 +72,19 @@ public class MainCharacter : MonoBehaviour
         }
     }
 
-    public float Life
-    {
-        get
-        {
-            return life;
-        }
-
-        set
-        {
-            life = value;
-        }
-    }
-
     public bool CanShootAllTime
     {
         set
         {
             canShootAllTime = value;
+        }
+    }
+
+    public bool Alive
+    {
+        get
+        {
+            return alive;
         }
     }
 
@@ -113,7 +111,8 @@ public class MainCharacter : MonoBehaviour
             canShoot = true;
         }
 
-        DestroyMainCharacter();
+        alive = life > 0;
+
         movements();
         Shoot();
         UpdateStatsAllTime();
@@ -189,22 +188,22 @@ public class MainCharacter : MonoBehaviour
         itemBulletSpeed.ChangeStatValue(ref bulletSpeed);
     }
 
-    private void DestroyMainCharacter()
-    {
-        if (life < 1)
-        {
-            this.gameObject.SetActive(false);
-        }
-    }
-
     private void movements()
     {
-        rb.velocity = Vector2.zero;
+        if (alive == true)
+        {
+            rb.velocity = Vector2.zero;
 
-        Vector2 movement = new Vector2(Input.GetAxisRaw("Vertical"), Input.GetAxisRaw("Horizontal")).normalized;
+            Vector2 movement = new Vector2(Input.GetAxisRaw("Vertical"), Input.GetAxisRaw("Horizontal")).normalized;
 
-        rb.velocity += movement.x * characterSpeed * Vector2.up;
-        rb.velocity += movement.y * characterSpeed * Vector2.right;
+            rb.velocity += movement.x * characterSpeed * Vector2.up;
+            rb.velocity += movement.y * characterSpeed * Vector2.right;
+        }
+
+        else
+        {
+            rb.velocity = Vector2.zero;
+        }
     }
     
     private void Shoot()

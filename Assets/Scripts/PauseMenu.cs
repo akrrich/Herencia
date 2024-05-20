@@ -10,6 +10,8 @@ public class PauseMenu : MonoBehaviour
 
     private bool gameInPause = false;
 
+    private bool canEnterInPauseMode = true;
+
 
     public bool GameInPause
     {
@@ -24,6 +26,14 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    public bool CanEnterInPauseMode
+    {
+        set
+        {
+            canEnterInPauseMode = value;
+        }
+    }
+
 
     private void Update()
     {
@@ -33,7 +43,7 @@ public class PauseMenu : MonoBehaviour
 
     private void CheckIfIsPauseOrNot()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && canEnterInPauseMode == true)
         {
             if (gameInPause == false)
             {

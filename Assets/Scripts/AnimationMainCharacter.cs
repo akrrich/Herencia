@@ -7,6 +7,36 @@ public class AnimationMainCharacter : MonoBehaviour
     private MainCharacter character;
 
 
+    [SerializeField] private AudioSource deafeatSound;
+
+
+    private float counterForDeath = 0f;
+
+
+    private bool canDoAnimations = true;
+
+    private bool canShowDefeatScreen = false;
+
+    private bool isSoundPlaying = false;
+
+    private bool canHearSong = false;
+
+    public bool CanDoAnimations
+    {
+        set
+        {
+            canDoAnimations = value;
+        }
+    }
+    public bool CanShowDefeatScreen
+    {
+        get
+        {
+            return canShowDefeatScreen;
+        }
+    }
+
+
     private void Start()
     {
         character = GetComponent<MainCharacter>();
@@ -14,15 +44,24 @@ public class AnimationMainCharacter : MonoBehaviour
 
     private void Update()
     {
-        AllAnimations();
+        if (isSoundPlaying == false && canHearSong == true)
+        {
+            deafeatSound.Play();
+
+            isSoundPlaying = true;
+
+        }
+
+        if (canDoAnimations == true)
+        {
+            AnimationIdle();
+            AnimationRightAndLeft();
+        }
+
+        AnimationDeath();
+
     }
 
-    public void AllAnimations()
-    {
-        AnimationIdle();
-        AnimationRightAndLeft();
-        AnimationUpAndDown();
-    }
 
     private void AnimationIdle()
     {
@@ -39,45 +78,35 @@ public class AnimationMainCharacter : MonoBehaviour
 
     private void AnimationRightAndLeft()
     {
-        if (character.Rb.velocity.x < 0)
+        if (character.Alive == true)
         {
-            character.Anim.SetBool("runningLeft", true);
+            character.Anim.SetBool("runningLeft", character.Rb.velocity.x < 0);
+            character.Anim.SetBool("runningRight", character.Rb.velocity.x > 0);
         }
+
         else
         {
             character.Anim.SetBool("runningLeft", false);
-        }
-
-
-        if (character.Rb.velocity.x > 0)
-        {
-            character.Anim.SetBool("runningRight", true);
-        }
-        else
-        {
             character.Anim.SetBool("runningRight", false);
         }
     }
 
-    private void AnimationUpAndDown()
+    private void AnimationDeath()
     {
-        if (character.Rb.velocity.y < 0)
+        if (character.Alive == false)
         {
-            character.Anim.SetBool("runningDown", true);
-        }
-        else
-        {
-            character.Anim.SetBool("runningDown", false);
-        }
+            canHearSong = true;
 
+            character.Anim.SetBool("death", true);
 
-        if (character.Rb.velocity.y > 0)
-        {
-            character.Anim.SetBool("runningUp", true);
-        }
-        else
-        {
-            character.Anim.SetBool("runningUp", false);
+            counterForDeath += Time.deltaTime;
+
+            if (counterForDeath > 0.8f)
+            {
+                character.Anim.SetBool("death", false);
+
+                canShowDefeatScreen = true;
+            }
         }
     }
 }

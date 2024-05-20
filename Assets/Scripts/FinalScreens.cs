@@ -8,8 +8,11 @@ public class FinalScreens : MonoBehaviour
 {
     [SerializeField] private MainCharacter mainCharacter;
 
+    [SerializeField] private AnimationMainCharacter anim;
 
-    [SerializeField] private AudioSource defeatSound;
+    [SerializeField] private PauseMenu pauseMenu;
+
+
     [SerializeField] private AudioSource winSound;
 
     private AudioSource optionSound;
@@ -19,8 +22,7 @@ public class FinalScreens : MonoBehaviour
     private Button buttonBackToMenu;
 
 
-    private GameObject defeatImage;
-    private GameObject winImage;
+    private GameObject finalPanel;
 
     private GameObject playAgain;
     private GameObject backToMenu;
@@ -37,18 +39,17 @@ public class FinalScreens : MonoBehaviour
 
 
     private string sceneInGameName = "SceneInGame";
-    private string sceneMenuName = "Name";
+    private string sceneMenuName = "Menu";
 
 
     private void Start()
-    { 
+    {
         optionSound = GetComponent<AudioSource>();
 
         buttonPlayAgain = transform.Find("Button Play Again").GetComponent<Button>();
         buttonBackToMenu = transform.Find("Button Back To Menu").GetComponent<Button>();
 
-        defeatImage = transform.Find("Panel Defeat").gameObject;
-        winImage = transform.Find("Panel Win").gameObject;
+        finalPanel = transform.Find("Panel Win").gameObject;
         playAgain = transform.Find("Button Play Again").gameObject;
         backToMenu = transform.Find("Button Back To Menu").gameObject;
     }
@@ -56,8 +57,8 @@ public class FinalScreens : MonoBehaviour
 
     private void Update()
     {
-        ConditionForChangeScenes(PlayButtonActive, countForPlayButton, sceneInGameName);
-        ConditionForChangeScenes(BackButtonActive, countForBackButton, sceneMenuName);
+        ConditionForChangeScenes(ref PlayButtonActive, ref countForPlayButton, ref sceneInGameName);
+        ConditionForChangeScenes(ref BackButtonActive, ref countForBackButton, ref sceneMenuName);
 
         DefeatScreen();
         WinScreen();
@@ -68,6 +69,8 @@ public class FinalScreens : MonoBehaviour
     {
         if (isSoundPlaying == false)
         {
+            Time.timeScale = 1f;
+
             optionSound.Play();
             isSoundPlaying = true;
             PlayButtonActive = true;
@@ -80,6 +83,8 @@ public class FinalScreens : MonoBehaviour
     {
         if (isSoundPlaying == false) 
         {
+            Time.timeScale = 1f;
+
             optionSound.Play();
             isSoundPlaying = true;
             BackButtonActive = true;
@@ -91,11 +96,18 @@ public class FinalScreens : MonoBehaviour
 
     private void DefeatScreen()
     {
-        if (mainCharacter.Life < 1)
+        if (mainCharacter.Alive == false && anim.CanShowDefeatScreen == true)
         {
-            ActiveFinalSound(defeatSound);
-            defeatImage.SetActive(true);
-            
+            mainCharacter.CanShootAllTime = false;
+
+            pauseMenu.CanEnterInPauseMode = false;
+
+            anim.CanDoAnimations = false;
+
+            Time.timeScale = 0f;
+
+            finalPanel.SetActive(true);
+
             ActiveBothButtons();
         }
     }
@@ -105,8 +117,17 @@ public class FinalScreens : MonoBehaviour
         // future condiiton for win
         if (Input.GetKeyDown(KeyCode.V))
         {
-            ActiveFinalSound(winSound);
-            winImage.SetActive(true);
+            mainCharacter.CanShootAllTime = false;
+
+            pauseMenu.CanEnterInPauseMode = false;
+
+            anim.CanDoAnimations = false;
+
+            Time.timeScale = 0f;
+
+            finalPanel.SetActive(true);
+
+            winSound.Play();
 
             ActiveBothButtons();
         }
@@ -118,12 +139,7 @@ public class FinalScreens : MonoBehaviour
         backToMenu.SetActive(true);
     }
 
-    private void ActiveFinalSound(AudioSource finalAudio)
-    {
-        finalAudio.Play();
-    }
-
-    private void ConditionForChangeScenes(bool buttonActive, float counterForButton, string nameScene)
+    private void ConditionForChangeScenes(ref bool buttonActive, ref float counterForButton, ref string nameScene)
     {
         if (buttonActive == true)
         {
