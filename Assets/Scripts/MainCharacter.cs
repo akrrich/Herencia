@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class MainCharacter : MonoBehaviour
 {
@@ -14,7 +15,6 @@ public class MainCharacter : MonoBehaviour
 
     [SerializeField] private SliderController sliderBulletSpeed;
 
-
     [SerializeField] private ItemController itemLife;
 
     [SerializeField] private ItemController itemShield;
@@ -22,7 +22,6 @@ public class MainCharacter : MonoBehaviour
     [SerializeField] private ItemController itemCharacterSpeed;
 
     [SerializeField] private ItemController itemBulletSpeed;
-
 
     [SerializeField] private GameObject bulletPrefab;
 
@@ -33,18 +32,22 @@ public class MainCharacter : MonoBehaviour
 
     private Animator anim;
 
-
+    // Stats
+    private const float maxLife = 10;
     private float life = 5;
 
+    private const float maxShield = 10;
     private float shield = 0;
 
+    private const float maxCharacterSpeed = 20;
     private float characterSpeed = 10f;
-    
-    private float bulletSpeed = 15f;
 
+    private const float maxAttackSpeed = 30;
+    private float attackSpeed = 2.5f;
 
     private float counterForShoot = 0;
 
+    private float bulletSpeed = 30;
 
     private bool alive = true;
 
@@ -54,6 +57,21 @@ public class MainCharacter : MonoBehaviour
     private bool hasLife = true;
     private bool hasShield = false;
 
+    private float leftDir;
+    private float rightDir;
+
+    public bool HasLife { get => life > 0; }
+    public bool HasShield { get => shield > 0; }
+
+    public bool CanShootAllTime { get => canShootAllTime; set => canShootAllTime = value; }
+
+    public enum Stats
+    {
+        LifePoints,
+        Shield,
+        characterSpeed,
+        attackSpeed
+    }
 
 
     public Rigidbody2D Rb
@@ -72,14 +90,6 @@ public class MainCharacter : MonoBehaviour
         }
     }
 
-    public bool CanShootAllTime
-    {
-        set
-        {
-            canShootAllTime = value;
-        }
-    }
-
     public bool Alive
     {
         get
@@ -88,73 +98,61 @@ public class MainCharacter : MonoBehaviour
         }
     }
 
-
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
         shootSound = GetComponent<AudioSource>();
 
-        sliderLife.InitializeBarStat(life, 5);
-        sliderShield.InitializeBarStat(shield, 5);
-        sliderCharacterSpeed.InitializeBarStat(characterSpeed, 15);
-        sliderBulletSpeed.InitializeBarStat(bulletSpeed, 20);
+        sliderLife.InitializeBarStat(life, maxLife);
+        sliderShield.InitializeBarStat(shield, maxShield);
+        sliderCharacterSpeed.InitializeBarStat(characterSpeed, maxCharacterSpeed);
+        sliderBulletSpeed.InitializeBarStat(attackSpeed, maxAttackSpeed);
+
+        canShoot = true;
+        canShootAllTime = true;
+
+        leftDir = anim.transform.localScale.x;
+        rightDir = -anim.transform.localScale.x;
+        alive = true;
+
+        UpdateStats();
     }
 
 
     private void Update()
     {
+        CheckCanShoot();
+        Movement();
+        Shoot();
+
+        CheckVictory();
+    }
+
+    private void CheckVictory()
+    {
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            SceneManager.LoadScene("Victoria");
+        }
+    }
+    private void CheckCanShoot()
+    {
+        if (canShoot)
+            return;
+
         counterForShoot += Time.deltaTime;
 
-        if (counterForShoot > 0.2) 
+        if (counterForShoot > (2 / attackSpeed))
         {
             canShoot = true;
-        }
-
-        alive = life > 0;
-
-        movements();
-        Shoot();
-        UpdateStatsAllTime();
-        IncreaseStatValue();
-        CheckIfHasLifeOrShield();
-        pruebaDeSliders();
-    }
-
-
-    // funcion de prueba para la vida y escudo
-    private void pruebaDeSliders()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            DamageReceived(1);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            life++;
-        }
-
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            shield++;
-        }
-
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            characterSpeed += 0.25f;
-        }
-
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            bulletSpeed += 0.30f;
+            counterForShoot = 0;
         }
     }
 
-
-    private void DamageReceived(float damage)
+    public void ApplyDamage(float damage)
     {
-        if (shield > 0)
+        if (HasShield)
         {
             shield -= damage;
         }
@@ -163,58 +161,56 @@ public class MainCharacter : MonoBehaviour
         {
             life -= damage;
         }
+
+        UpdateStats();
+
+        if (life <= 0)
+        {
+            Die();
+        }
     }
 
-    private void UpdateStatsAllTime()
+    private void GoToLoose()
+    {
+        SceneManager.LoadScene("Derrota");
+    }
+    private void Die()
+    {
+        alive = false;
+        Invoke("GoToLoose", 0.8f);
+
+    }
+
+    private void UpdateStats()
     {
         sliderLife.ChangeActualValue(life);
-        sliderLife.LimitValue(ref life, 5, 1, 0);
-
         sliderShield.ChangeActualValue(shield);
-        sliderShield.LimitValue(ref shield, 5, 1, 0);
-
         sliderCharacterSpeed.ChangeActualValue(characterSpeed);
-        sliderCharacterSpeed.LimitValue(ref characterSpeed, 15, 10, 10);
-
-        sliderBulletSpeed.ChangeActualValue(bulletSpeed);
-        sliderBulletSpeed.LimitValue(ref bulletSpeed, 20, 15, 15);
+        sliderBulletSpeed.ChangeActualValue(attackSpeed);
     }
 
-    private void IncreaseStatValue()
+    private void Movement()
     {
-        itemLife.ChangeStatValue(ref life);
-        itemShield.ChangeStatValue(ref shield);
-        itemCharacterSpeed.ChangeStatValue(ref characterSpeed);
-        itemBulletSpeed.ChangeStatValue(ref bulletSpeed);
-    }
-
-    private void movements()
-    {
-        if (alive == true)
+        rb.velocity = Vector2.zero;
+        
+        if (Alive)
         {
-            rb.velocity = Vector2.zero;
+            Vector2 movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+            rb.velocity += movement * characterSpeed;
 
-            Vector2 movement = new Vector2(Input.GetAxisRaw("Vertical"), Input.GetAxisRaw("Horizontal")).normalized;
-
-            rb.velocity += movement.x * characterSpeed * Vector2.up;
-            rb.velocity += movement.y * characterSpeed * Vector2.right;
-        }
-
-        else
-        {
-            rb.velocity = Vector2.zero;
+            float direccion = rb.velocity.x > 0 ? rightDir : leftDir;
+            anim.transform.localScale = new Vector3(direccion, anim.transform.localScale.y, anim.transform.localScale.z);
         }
     }
     
     private void Shoot()
     {
-        if (Input.GetMouseButtonDown(0) && canShoot == true && canShootAllTime == true)
+        if (Alive && Input.GetMouseButton(0) && canShoot && canShootAllTime)
         {
             shootSound.Play();
 
             canShoot = false;
             counterForShoot = 0;
-
 
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0f;
@@ -230,17 +226,30 @@ public class MainCharacter : MonoBehaviour
         }
     }
 
-    private void CheckIfHasLifeOrShield()
+    internal void PickUpItem(Stats stats, float points)
     {
-        if (life > 0 && shield < 1)
+        if (!Alive)
+            return;
+
+        switch (stats)
         {
-            hasLife = true;
-            hasShield = false;
+            case Stats.LifePoints:
+                this.life = Mathf.Clamp(this.life + points, 0, maxLife);
+                break;
+
+            case Stats.Shield:
+                this.shield = Mathf.Clamp(this.shield + points, 0, maxShield); 
+                break;
+
+            case Stats.characterSpeed:
+                this.characterSpeed = Mathf.Clamp(this.characterSpeed + points, 0, maxCharacterSpeed); 
+                break;
+
+            case Stats.attackSpeed:
+                this.attackSpeed = Mathf.Clamp(this.attackSpeed + points, 0, maxAttackSpeed); 
+                break;
         }
 
-        else if (life > 0 && shield > 0)
-        {
-            hasShield = true;
-        }
+        UpdateStats();
     }
 }

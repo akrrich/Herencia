@@ -11,11 +11,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] DeformeController deforme;
     [SerializeField] Transform spawnPoint;
     [SerializeField] GameObject player;
+    
+    [SerializeField] MapController startingMap;
+    private MapController currentMap;
 
+    private void Start()
+    {
+        currentMap = startingMap;
+    }
 
     private void Update()
     {
-        timeCounter += Time.deltaTime;
+        /*timeCounter += Time.deltaTime;
 
         if (timeCounter > spawnTime)
         {
@@ -24,5 +31,8 @@ public class GameManager : MonoBehaviour
             DeformeController df = Instantiate<DeformeController>(deforme, new Vector2(spawnPoint.position.x, spawnPoint.position.y), Quaternion.identity);
             df.SetTarget(player);
         }
+        */
+        if(!startingMap.HasBeenInitialized)
+            startingMap.InitializeFloor();
     }
 }

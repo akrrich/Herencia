@@ -26,10 +26,9 @@ public class MainMenuButtons : MonoBehaviour
 
             if (counterForPlay > 0.35)
             {
-                SceneManager.LoadScene("SceneInGame");
+                SceneManager.LoadScene("LaboratorioAbandonado");
             }
         }
-
         /*if (timeForSoundExit == true)
         {
             counterForExit += Time.deltaTime;
@@ -61,17 +60,13 @@ public class MainMenuButtons : MonoBehaviour
 
     public void ExitButton()
     {
-        if (isSoundPlaying == false)
-        {
-            optionSound.Play();
-            isSoundPlaying = true;
-
-            buttonPlay.transition = Selectable.Transition.None;
-        }
-
-        timeForSoundExit = true;
+        Application.Quit();
     }
 
+    public void MainMenuButton()
+    {
+        SceneManager.LoadScene("Menu");
+    }
 
     private void ExitMenuWithKey()
     {

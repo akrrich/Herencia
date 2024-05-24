@@ -6,51 +6,57 @@ using UnityEngine;
 
 public class ItemController : MonoBehaviour
 {
+
+    [SerializeField] MainCharacter.Stats stat;
+    [SerializeField] float points;
+
     private AudioSource itemGrabSound;
+    private Transform sprite;
 
-    private BoxCollider2D boxCollider;
-
-    private SpriteRenderer itemRenderer;
-
-
-    private bool activeItem = false;
+    private float deltaY;
+    private float currentDelta;
+    private int direction;
 
 
     private void Start()
     {
         itemGrabSound = GetComponent<AudioSource>();
-        boxCollider = GetComponent<BoxCollider2D>();
-        itemRenderer = GetComponent<SpriteRenderer>();
+        sprite = transform.GetChild(0);
+
+        deltaY = 0.5f;
+        currentDelta = 0;
+        direction = 1;
     }
-
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             itemGrabSound.Play();
 
-            Destroy(boxCollider);
+            GameObject go = collision.gameObject;
+            var mc = go.GetComponent<MainCharacter>();
 
-            Color newColor = itemRenderer.color;
-            newColor.a = 0f;
+            mc.PickUpItem(stat, points);
 
-            itemRenderer.color = newColor;
-
-            activeItem = true;
-
-            Destroy(this.gameObject, 1.5f);
+            Destroy(this.gameObject);
         }
     }
 
-
-    public void ChangeStatValue(ref float statVlue)
+    private void Hover()
     {
-        if (activeItem == true)
-        {
-            statVlue++;
+        currentDelta += Time.deltaTime * direction;
 
-            activeItem = false;
+        if (Mathf.Abs(currentDelta) > deltaY) {
+            currentDelta = 0;
+            direction = -direction;
         }
+
+        sprite.transform.position += new Vector3(0, Time.deltaTime * direction, 0);
+    }
+
+
+    private void Update()
+    {
+        Hover();
     }
 }

@@ -21,6 +21,7 @@ public class AnimationMainCharacter : MonoBehaviour
 
     private bool canHearSong = false;
 
+
     public bool CanDoAnimations
     {
         set
@@ -39,7 +40,7 @@ public class AnimationMainCharacter : MonoBehaviour
 
     private void Start()
     {
-        character = GetComponent<MainCharacter>();
+        character = GetComponentInParent<MainCharacter>();
     }
 
     private void Update()
@@ -80,14 +81,12 @@ public class AnimationMainCharacter : MonoBehaviour
     {
         if (character.Alive == true)
         {
-            character.Anim.SetBool("runningLeft", character.Rb.velocity.x < 0);
-            character.Anim.SetBool("runningRight", character.Rb.velocity.x > 0);
+            character.Anim.SetBool("walking", character.Rb.velocity.magnitude > 0.1f);
         }
 
         else
         {
-            character.Anim.SetBool("runningLeft", false);
-            character.Anim.SetBool("runningRight", false);
+            character.Anim.SetBool("walking", false);
         }
     }
 

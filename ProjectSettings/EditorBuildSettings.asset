@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SceneInGame.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/LaboratorioAbandonado.unity
+    guid: 8a361d75f6c4d2941a2d5412ef1fd5f5
+  - enabled: 1
+    path: Assets/Scenes/Victoria.unity
+    guid: 6dc8afd9b354eab449b6a216eee5ec69
+  - enabled: 1
+    path: Assets/Scenes/Derrota.unity
+    guid: 24bddee55b5a08648b5d80590b462e90
   m_configObjects: {}

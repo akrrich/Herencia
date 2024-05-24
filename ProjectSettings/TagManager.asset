@@ -9,6 +9,9 @@ TagManager:
   - Main Char Bullet
   - Enemy
   - Wall
+  - SpawnPoint
+  - Door
+  - Prop
   layers:
   - Default
   - TransparentFX
@@ -16,9 +19,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Door
+  - Player
+  - Item
   - 
   - 
   - 
@@ -51,6 +54,9 @@ TagManager:
     locked: 0
   - name: Walls
     uniqueID: 2727816431
+    locked: 0
+  - name: Doors
+    uniqueID: 1710951069
     locked: 0
   - name: Items
     uniqueID: 645718101

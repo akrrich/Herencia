@@ -96,7 +96,7 @@ public class FinalScreens : MonoBehaviour
 
     private void DefeatScreen()
     {
-        if (mainCharacter.Alive == false && anim.CanShowDefeatScreen == true)
+        if (!mainCharacter.Alive && anim.CanShowDefeatScreen)
         {
             mainCharacter.CanShootAllTime = false;
 

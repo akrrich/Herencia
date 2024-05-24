@@ -33,13 +33,17 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             GameObject go = collision.gameObject;
-            var pc = go.GetComponent<DeformeController>();
-            pc.Die();
+            var dc = go.GetComponent<DeformeController>();
+            
+            if (dc.IsDead)
+                return;
+
+            dc.Die();
+            Destroy(this.gameObject);
             return;
         }
         
-        
-        if(collision.gameObject.CompareTag("Wall"))
+        if(collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Prop"))
         {
             Destroy(this.gameObject);
         }

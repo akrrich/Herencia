@@ -30,19 +30,4 @@ public class SliderController : MonoBehaviour
     {
         slider.value = actualValue;
     }
-
-    public void LimitValue(ref float actualValue, float maxValue, float minimumValue, float startValue)
-    {
-        if (actualValue > maxValue)
-        {
-            actualValue = maxValue;
-            slider.value = actualValue;
-        }
-
-        else if (actualValue < minimumValue)
-        {
-            actualValue = startValue;
-            slider.value = actualValue;
-        }
-    }
 }
