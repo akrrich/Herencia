@@ -16,11 +16,11 @@ https://docs.google.com/document/d/1aknShFHrOtZ9g9Md1bW9l3HVyScfDd_DHZEjovmKb1U/
 https://docs.google.com/presentation/d/1oqwn6sbKOKql7n4UsS4GzdcAzpX8qsI5v18VTWxw5fs/edit?usp=sharing
 ### Trello
 https://trello.com/b/nxzARTqj/herencia-tareas-pendientes
-## Build jugable
-[Build jugable v0.2](https://github.com/akrrich/ProduccionDeVideojuegos/blob/main/Build/Herencia.zip)
+### Documento de Testing
+https://docs.google.com/spreadsheets/d/1CIys_-r7noLJE7ublW1azOHo4rrfs1vJoVdiP1SXU1k/edit#gid=0
 
-### Integrantes
-Santiago Rodriguez | Santiago Guarino | Uma Ferracioli | Ivan Ramirez | Alesio Rojas | Luciano Pueyo
+## Integrantes
+Ivan Ramirez | Alesio Rojas | Luciano Pueyo
 
 ##
 Uade - Producción de videojuegos - 1er cuatrimestre 2024
