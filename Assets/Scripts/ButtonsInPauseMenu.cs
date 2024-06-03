@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEditor.ShaderKeywordFilter;
 
 public class ButtonsInPauseMenu : MonoBehaviour
 {
@@ -56,7 +53,7 @@ public class ButtonsInPauseMenu : MonoBehaviour
 
             if (counterForExitGame > 0.35f)
             {
-                UnityEditor.EditorApplication.isPlaying = false;
+                //UnityEditor.EditorApplication.isPlaying = false;
 
                 Application.Quit();
             }
