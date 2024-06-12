@@ -236,7 +236,7 @@ public class MainCharacter : MonoBehaviour
             case Stats.LifePoints:
                 this.life = Mathf.Clamp(this.life + points, 0, maxLife);
                 break;
-
+                
             case Stats.Shield:
                 this.shield = Mathf.Clamp(this.shield + points, 0, maxShield); 
                 break;
