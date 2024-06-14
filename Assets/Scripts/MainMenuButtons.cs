@@ -26,20 +26,10 @@ public class MainMenuButtons : MonoBehaviour
 
             if (counterForPlay > 0.35)
             {
+                NotesController.CreateNewList();
                 SceneManager.LoadScene("LaboratorioAbandonado");
             }
         }
-        /*if (timeForSoundExit == true)
-        {
-            counterForExit += Time.deltaTime;
-
-            if (counterForExit > 0.35)
-            {
-                UnityEditor.EditorApplication.isPlaying = false;
-
-                Application.Quit();
-            }
-        }*/
 
         ExitMenuWithKey();
     }

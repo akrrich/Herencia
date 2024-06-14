@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/LaboratorioAbandonado.unity
     guid: 04ddf4d52cdf922458e4bf37a2b987ba
   - enabled: 1
+    path: Assets/Scenes/BosqueMuerto.unity
+    guid: f86efbb853e03184e90413f45f672c0d
+  - enabled: 1
     path: Assets/Scenes/Victoria.unity
     guid: 6dc8afd9b354eab449b6a216eee5ec69
   - enabled: 1

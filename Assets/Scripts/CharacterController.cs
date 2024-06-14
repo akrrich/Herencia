@@ -1,8 +1,4 @@
-using UnityEditor.Animations;
-using UnityEditorInternal;
 using UnityEngine;
-using UnityEngine.UIElements;
-using AnimatorController = UnityEditor.Animations.AnimatorController;
 
 public abstract class CharacterController : MonoBehaviour
 {
@@ -84,16 +80,6 @@ public abstract class CharacterController : MonoBehaviour
 
     private void Move()
     {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            rb.velocity += Time.deltaTime * Vector2.down;
-        }
-
-        if (Input.GetKeyDown(KeyCode.LeftAlt))
-        {
-            life = 0;
-        }
-
         ExecuteMove();
 
         float direccion = rb.velocity.x > 0 ? rightDir : leftDir;

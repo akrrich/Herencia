@@ -10,9 +10,8 @@ public class NotesController : MonoBehaviour
 {
     private static List<GameObject> notesList = new List<GameObject>();
 
-    [SerializeField] private VictorController character;
-    [SerializeField] private ArmController armController;
-
+    [SerializeField] private VictorController victor;
+    private ArmController armController;
 
     private GameObject panel;
 
@@ -52,6 +51,8 @@ public class NotesController : MonoBehaviour
         changeNote = GetComponent<AudioSource>();
 
         diaryValue.text = 0 + " / " + 10;
+
+        armController = victor.GetComponentInChildren<ArmController>();
     }
 
 
@@ -84,7 +85,7 @@ public class NotesController : MonoBehaviour
         {
             panel.SetActive(true);
 
-            character.CanMove = false;
+            victor.CanMove = false;
             armController.CanMoveArm = false;
 
             notesList[currentNoteIndex].SetActive(true);
@@ -96,7 +97,7 @@ public class NotesController : MonoBehaviour
         {
             panel.SetActive(false);
 
-            character.CanMove = true;
+            victor.CanMove = true;
             armController.CanMoveArm = true;
 
             notesList[currentNoteIndex].SetActive(false);
