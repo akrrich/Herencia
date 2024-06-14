@@ -51,6 +51,9 @@ public abstract class CharacterController : MonoBehaviour
     private float leftDir;
     private float rightDir;
 
+    // pause
+    private bool canMove = true;
+
     public bool IsAlive { get => life > 0; }
     public bool IsMoving { get => rb.velocity.magnitude > 0.1; }
     public bool HasShield { get => shield > 0; }
@@ -61,6 +64,14 @@ public abstract class CharacterController : MonoBehaviour
         Shield,
         characterSpeed,
         attackSpeed
+    }
+
+    public bool CanMove
+    {
+        set
+        {
+            canMove = value;
+        }
     }
 
     void UpdateStates()
@@ -172,7 +183,7 @@ public abstract class CharacterController : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        if (!IsAlive)
+        if (!IsAlive || !canMove)
             return;
         
         UpdateStates();

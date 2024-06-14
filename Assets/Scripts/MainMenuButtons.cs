@@ -26,7 +26,7 @@ public class MainMenuButtons : MonoBehaviour
 
             if (counterForPlay > 0.35)
             {
-                SceneManager.LoadScene("LaboratorioAbandonado");
+                SceneManager.LoadScene("AbandonedLab");
             }
         }
         /*if (timeForSoundExit == true)

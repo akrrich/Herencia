@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -54,6 +56,8 @@ public class MainCharacter : MonoBehaviour
     private bool canShoot = true;
     private bool canShootAllTime = true;
 
+    private bool canMove = true;
+
     private float leftDir;
     private float rightDir;
 
@@ -92,6 +96,14 @@ public class MainCharacter : MonoBehaviour
         get
         {
             return alive;
+        }
+    }
+
+    public bool CanMove
+    {
+        set
+        {
+            canMove = value;
         }
     }
 
@@ -190,7 +202,7 @@ public class MainCharacter : MonoBehaviour
     {
         rb.velocity = Vector2.zero;
         
-        if (Alive)
+        if (Alive && canMove)
         {
             Vector2 movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
             rb.velocity += movement * characterSpeed;
@@ -233,7 +245,7 @@ public class MainCharacter : MonoBehaviour
             case Stats.LifePoints:
                 this.life = Mathf.Clamp(this.life + points, 0, maxLife);
                 break;
-
+                
             case Stats.Shield:
                 this.shield = Mathf.Clamp(this.shield + points, 0, maxShield); 
                 break;
