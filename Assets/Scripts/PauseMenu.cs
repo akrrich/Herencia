@@ -5,9 +5,10 @@ using UnityEngine.TextCore.Text;
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] private MainCharacter character;
-    [SerializeField] private ArmController armController;
+    [SerializeField] private VictorController victor;
     [SerializeField] private NotesController notesController;
+
+    private ArmController armController;
 
     private GameObject panel;
 
@@ -37,6 +38,7 @@ public class PauseMenu : MonoBehaviour
     private void Start()
     {
         panel = transform.Find("panel").gameObject;
+        armController = victor.GetComponentInChildren<ArmController>();
     }
 
 
@@ -69,9 +71,7 @@ public class PauseMenu : MonoBehaviour
 
         armController.CanMoveArm = false;
 
-        character.CanMove = false;
-
-        character.CanShootAllTime = false;
+        victor.CanMove = false;
 
         Time.timeScale = 0f;
 
@@ -88,9 +88,7 @@ public class PauseMenu : MonoBehaviour
         {
             armController.CanMoveArm = true;
 
-            character.CanMove = true;
-
-            character.CanShootAllTime = true;
+            victor.CanMove = true;
         }
 
         Time.timeScale = 1f;
