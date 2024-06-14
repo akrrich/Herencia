@@ -5,6 +5,7 @@ using UnityEngine;
 public class ArmController : MonoBehaviour
 {
     [SerializeField] GameObject armSprite;
+    [SerializeField] Transform armPivot;
     private float localScaleRight;
     private float localScaleLeft;
 
@@ -15,6 +16,8 @@ public class ArmController : MonoBehaviour
     }
     void Update()
     {
+        transform.position = armPivot.position;
+
         var dir =  Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);

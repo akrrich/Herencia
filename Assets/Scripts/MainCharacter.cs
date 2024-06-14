@@ -54,9 +54,6 @@ public class MainCharacter : MonoBehaviour
     private bool canShoot = true;
     private bool canShootAllTime = true;
 
-    private bool hasLife = true;
-    private bool hasShield = false;
-
     private float leftDir;
     private float rightDir;
 

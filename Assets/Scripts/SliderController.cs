@@ -8,13 +8,6 @@ public class SliderController : MonoBehaviour
 {
     [SerializeField] private Slider slider;
 
-
-    private void Start()
-    {
-        //slider = GetComponent<Slider>();
-    }
-
-
     public void InitializeBarStat(float actualValue, float maxValue)
     {
         SetMaxValue(maxValue);

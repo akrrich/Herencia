@@ -363,3 +363,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1739127ff37c7464584d32fa997f14dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 40
+  damage: 5
+  splashSound: {fileID: 8300000, guid: 8da5c08c246287e42958291f68cdc288, type: 3}

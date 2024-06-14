@@ -7,10 +7,10 @@ using UnityEngine;
 public class ItemController : MonoBehaviour
 {
 
-    [SerializeField] MainCharacter.Stats stat;
+    [SerializeField] CharacterController.Stats stat;
     [SerializeField] float points;
+    [SerializeField] AudioClip itemGrabSound;
 
-    private AudioSource itemGrabSound;
     private Transform sprite;
 
     private float deltaY;
@@ -20,7 +20,6 @@ public class ItemController : MonoBehaviour
 
     private void Start()
     {
-        itemGrabSound = GetComponent<AudioSource>();
         sprite = transform.GetChild(0);
 
         deltaY = 0.5f;
@@ -31,12 +30,12 @@ public class ItemController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            itemGrabSound.Play();
+            AudioSource.PlayClipAtPoint(itemGrabSound, transform.position);
 
             GameObject go = collision.gameObject;
-            var mc = go.GetComponent<MainCharacter>();
+            var vc = go.GetComponent<VictorController>();
 
-            mc.PickUpItem(stat, points);
+            vc.PickUpItem(stat, points);
 
             Destroy(this.gameObject);
         }

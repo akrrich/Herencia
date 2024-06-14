@@ -10,7 +10,7 @@ public class MapController : MonoBehaviour
     [SerializeField] DoorController doorBottom;
     [SerializeField] DoorController doorLeft;
 
-    [SerializeField] List<DeformeController> enemigos;
+    [SerializeField] List<EnemyController> enemigos;
 
     private bool hasBeenInitialized;
     private bool cleared;
@@ -75,7 +75,7 @@ public class MapController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enemigos.TrueForAll(enemigo => enemigo.IsDead))
+        if (enemigos.TrueForAll(enemigo => !enemigo.IsAlive))
         {
             ClearFloor();
         }
