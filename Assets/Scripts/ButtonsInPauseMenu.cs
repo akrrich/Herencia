@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class ButtonsInPauseMenu : MonoBehaviour
 {
@@ -43,6 +44,8 @@ public class ButtonsInPauseMenu : MonoBehaviour
 
             if (counterForMenu > 0.35f)
             {
+                NotesController.CreateNewList();
+
                 SceneManager.LoadScene("Menu");
             }
         }

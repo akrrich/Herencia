@@ -6,6 +6,10 @@ using UnityEngine.TextCore.Text;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private MainCharacter character;
+    [SerializeField] private ArmController armController;
+    [SerializeField] private NotesController notesController;
+
+    private GameObject panel;
 
 
     private bool gameInPause = false;
@@ -19,11 +23,6 @@ public class PauseMenu : MonoBehaviour
         {
             return gameInPause;
         }
-
-        set
-        {
-            gameInPause = value;
-        }
     }
 
     public bool CanEnterInPauseMode
@@ -32,6 +31,12 @@ public class PauseMenu : MonoBehaviour
         {
             canEnterInPauseMode = value;
         }
+    }
+
+
+    private void Start()
+    {
+        panel = transform.Find("panel").gameObject;
     }
 
 
@@ -58,6 +63,14 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
+        panel.SetActive(gameInPause);
+
+        notesController.CanOpenNoteMode = false;
+
+        armController.CanMoveArm = false;
+
+        character.CanMove = false;
+
         character.CanShootAllTime = false;
 
         Time.timeScale = 0f;
@@ -67,7 +80,18 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
-        character.CanShootAllTime = true;
+        panel.SetActive(gameInPause);
+
+        notesController.CanOpenNoteMode = true;
+
+        if (notesController.OpenNoteMode == false)
+        {
+            armController.CanMoveArm = true;
+
+            character.CanMove = true;
+
+            character.CanShootAllTime = true;
+        }
 
         Time.timeScale = 1f;
 

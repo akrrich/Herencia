@@ -4,13 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.TextCore.Text;
 
 public class NotesController : MonoBehaviour
 {
     private static List<GameObject> notesList = new List<GameObject>();
 
-    [SerializeField] private GameObject panel;
+    [SerializeField] private MainCharacter character;
+    [SerializeField] private ArmController armController;
 
+
+    private GameObject panel;
 
     private AudioSource changeNote;
 
@@ -20,10 +24,30 @@ public class NotesController : MonoBehaviour
     private int currentNoteIndex = 0;
 
     private bool openNoteMode = false;
+    private bool canOpneNoteMode = true;
+
+
+    public bool CanOpenNoteMode
+    {
+        set
+        {
+            canOpneNoteMode = value;
+        }
+    }
+
+    public bool OpenNoteMode
+    {
+        get
+        {
+            return openNoteMode;
+        }
+    }
 
 
     private void Start()
     {
+        panel = transform.Find("Panel").gameObject;
+
         diaryValue = GetComponentInChildren<TMP_Text>();
         changeNote = GetComponent<AudioSource>();
 
@@ -33,8 +57,12 @@ public class NotesController : MonoBehaviour
 
     private void Update()
     {
-        NoteMenu();
-        ChangeNoteElement();
+        if (canOpneNoteMode)
+        {
+            NoteMenu();
+            ChangeNoteElement();
+        }
+
         UpdateNoteHud();
     }
 
@@ -44,13 +72,21 @@ public class NotesController : MonoBehaviour
         notesList.Add(newNote);
     }
 
+    public static void CreateNewList()
+    {
+        notesList = new List<GameObject>();
+    }
+
 
     private void NoteMenu()
     {
         if (Input.GetKeyDown(KeyCode.Q) && openNoteMode == false && notesList.Count > 0)
         {
             panel.SetActive(true);
-            Time.timeScale = 0f;
+
+            character.CanMove = false;
+            character.CanShootAllTime = false;
+            armController.CanMoveArm = false;
 
             notesList[currentNoteIndex].SetActive(true);
 
@@ -60,7 +96,10 @@ public class NotesController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Q) && openNoteMode == true)
         {
             panel.SetActive(false);
-            Time.timeScale = 1f;
+
+            character.CanMove = true;
+            character.CanShootAllTime = true;
+            armController.CanMoveArm = true;
 
             notesList[currentNoteIndex].SetActive(false);
 
@@ -74,10 +113,7 @@ public class NotesController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                if (notesList.Count > 1)
-                {
-                    changeNote.Play();
-                }
+                SoundChangeNote();
 
                 notesList[currentNoteIndex].SetActive(false);
                 currentNoteIndex = (currentNoteIndex + 1) % notesList.Count;
@@ -86,15 +122,20 @@ public class NotesController : MonoBehaviour
 
             else if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                if (notesList.Count > 1)
-                {
-                    changeNote.Play();
-                }
+                SoundChangeNote();
 
                 notesList[currentNoteIndex].SetActive(false);
                 currentNoteIndex = (currentNoteIndex - 1 + notesList.Count) % notesList.Count;
                 notesList[currentNoteIndex].SetActive(true);
             }
+        }
+    }
+
+    private void SoundChangeNote()
+    {
+        if (notesList.Count > 1)
+        {
+            changeNote.Play();
         }
     }
 
