@@ -13,6 +13,13 @@ public class VictorController : CharacterController
     [SerializeField] private SliderController sliderMovementSpeed;
     [SerializeField] private SliderController sliderAttackSpeed;
 
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
+
     protected override void Start()
     {
         base.Start();

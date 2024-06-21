@@ -8,7 +8,6 @@ public class ButtonsInPauseMenu : MonoBehaviour
     [SerializeField] private Button buttonMainMenu;
     [SerializeField] private Button buttonExitGame;
 
-
     private PauseMenu pauseMenu;
 
     private AudioSource optionSound;
@@ -29,7 +28,6 @@ public class ButtonsInPauseMenu : MonoBehaviour
     private void Start()
     {
         pauseMenu = GetComponent<PauseMenu>();
-
         optionSound = GetComponent<AudioSource>();
 
         panel = transform.Find("panel").gameObject;

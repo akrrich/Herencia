@@ -11,7 +11,6 @@ public class Notes : MonoBehaviour
     private Collider2D objectCollider;
 
 
-
     private void Start()
     {
         objectCollider = GetComponent<Collider2D>();   

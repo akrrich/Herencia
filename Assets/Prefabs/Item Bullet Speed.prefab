@@ -271,7 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat: 3
   points: 10
-  itemGrabSound: {fileID: 8300000, guid: 4e71ab1fb4397a54b85ee88211703fce, type: 3}
+  itemGrabSound: {fileID: 8300000, guid: 8b9e4cd4b772ccc4dba5356f74a4104d, type: 3}
 --- !u!61 &4334099677665623970
 BoxCollider2D:
   m_ObjectHideFlags: 0
