@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8354575524145220872}
   - component: {fileID: 3154010182193468401}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: energia_pixelada_15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1511322334620082646}
   - component: {fileID: 1257008839349699074}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 5665030203807624771}
   - component: {fileID: 8036375812624227591}
   - component: {fileID: 4756643611347867595}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bullet
   m_TagString: Main Char Bullet
   m_Icon: {fileID: 0}
