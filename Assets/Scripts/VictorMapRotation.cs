@@ -9,6 +9,14 @@ public class VictorMapRotation : MonoBehaviour
 
     private Transform victor;
 
+    private bool canRotate = true;
+
+
+    public bool CanRotate
+    {
+        set { canRotate = value; }
+    }
+
 
     private void Awake()
     {
@@ -19,16 +27,19 @@ public class VictorMapRotation : MonoBehaviour
 
     private void Update()
     {
-        Vector3 mousePosition = Input.mousePosition;
+        if (canRotate)
+        {
+            Vector3 mousePosition = Input.mousePosition;
 
-        mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, Camera.main.nearClipPlane));
-        mousePosition.z = 0;
+            mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, Camera.main.nearClipPlane));
+            mousePosition.z = 0;
 
-        Vector3 direction = mousePosition - victor.position;
+            Vector3 direction = mousePosition - victor.position;
 
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        angle += 230f;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            angle += 230f;
 
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        }
     }
 }

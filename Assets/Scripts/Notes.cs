@@ -6,6 +6,8 @@ public class Notes : MonoBehaviour
 {
     [SerializeField] private GameObject realNote;
 
+    private GameObject spriteMiniMap;
+
     private AudioSource audioGetNote;
     private Renderer objectRenderer;
     private Collider2D objectCollider;
@@ -13,6 +15,8 @@ public class Notes : MonoBehaviour
 
     private void Start()
     {
+        spriteMiniMap = transform.Find("MiniMap Objetive").gameObject;
+
         objectCollider = GetComponent<Collider2D>();   
         objectRenderer = GetComponent<Renderer>();
         audioGetNote = GetComponent<AudioSource>();
@@ -27,6 +31,7 @@ public class Notes : MonoBehaviour
 
             StartCoroutine(DestroyAfterSound());
 
+            spriteMiniMap.SetActive(false);
             objectRenderer.enabled = false;
             objectCollider.enabled = false;
 

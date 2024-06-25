@@ -7,6 +7,8 @@ using UnityEngine.UIElements;
 
 public class VictorController : CharacterController
 {
+    private DestroyGameObjects destroyGameObjects;
+
     [Header("GUI")]
     [SerializeField] private SliderController sliderLife;
     [SerializeField] private SliderController sliderShield;
@@ -24,6 +26,8 @@ public class VictorController : CharacterController
     {
         base.Start();
 
+        destroyGameObjects = FindObjectOfType<DestroyGameObjects>();
+
         sliderLife.InitializeBarStat(life, maxLife);
         sliderShield.InitializeBarStat(shield, maxShield);
         sliderMovementSpeed.InitializeBarStat(movementSpeed, maxMovementSpeed);
@@ -35,17 +39,20 @@ public class VictorController : CharacterController
     {
         if (Input.GetKeyDown(KeyCode.V))
         {
+            destroyGameObjects.DestroyObjects();
             SceneManager.LoadScene("Victoria");
         }
     }
     private void GoToLoose()
     {
+        destroyGameObjects.DestroyObjects();
         SceneManager.LoadScene("Derrota");
     }
     override protected void Die()
     {
         base.Die();
         Invoke("GoToLoose", 2f);
+
     }
 
     override public void ApplyDamage(float damage)

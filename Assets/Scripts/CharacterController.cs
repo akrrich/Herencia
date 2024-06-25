@@ -7,6 +7,8 @@ public abstract class CharacterController : MonoBehaviour
     private Animator anim;
     private BoxCollider2D boxCollider;
 
+    private GameObject spriteMiniMap;
+
     private AnimatorOverrideController animatorOverrideController;
     
     [Header("Animation Clips")]
@@ -90,6 +92,8 @@ public abstract class CharacterController : MonoBehaviour
         if(deathSound != null)
             AudioSource.PlayClipAtPoint(deathSound, transform.position);
         this.boxCollider.enabled = false;
+
+        spriteMiniMap.SetActive(false);
     }
     protected abstract bool IsAttacking();
     protected abstract void ExecuteAttack();
@@ -143,6 +147,8 @@ public abstract class CharacterController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
+
+        spriteMiniMap = transform.Find("MiniMap Objetive").gameObject;
 
         // Con esto puedo setear las animaciones por script
         animatorOverrideController = new AnimatorOverrideController(anim.runtimeAnimatorController);

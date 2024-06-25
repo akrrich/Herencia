@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public class ButtonsInPauseMenu : MonoBehaviour
 {
+    private DestroyGameObjects destroyGameObjects;
+
     [SerializeField] private Button buttonMainMenu;
     [SerializeField] private Button buttonExitGame;
 
@@ -27,6 +29,8 @@ public class ButtonsInPauseMenu : MonoBehaviour
 
     private void Start()
     {
+        destroyGameObjects = FindObjectOfType<DestroyGameObjects>();
+
         pauseMenu = GetComponent<PauseMenu>();
         optionSound = GetComponent<AudioSource>();
 
@@ -42,6 +46,8 @@ public class ButtonsInPauseMenu : MonoBehaviour
 
             if (counterForMenu > 0.35f)
             {
+                destroyGameObjects.DestroyObjects();
+
                 NotesController.CreateNewList();
 
                 SceneManager.LoadScene("Menu");

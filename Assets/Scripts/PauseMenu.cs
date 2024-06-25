@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private VictorController victor;
     [SerializeField] private NotesController notesController;
 
+    private VictorMapRotation victorMapRotation;
     private ArmController armController;
 
     private GameObject panel;
@@ -38,7 +39,9 @@ public class PauseMenu : MonoBehaviour
     private void Start()
     {
         panel = transform.Find("panel").gameObject;
+
         armController = victor.GetComponentInChildren<ArmController>();
+        victorMapRotation = victor.GetComponentInChildren<VictorMapRotation>();
     }
 
 
@@ -71,6 +74,8 @@ public class PauseMenu : MonoBehaviour
 
         armController.CanMoveArm = false;
 
+        victorMapRotation.CanRotate = false;
+
         victor.CanMove = false;
 
         Time.timeScale = 0f;
@@ -83,6 +88,8 @@ public class PauseMenu : MonoBehaviour
         panel.SetActive(gameInPause);
 
         notesController.CanOpenNoteMode = true;
+
+        victorMapRotation.CanRotate = true;
 
         if (notesController.OpenNoteMode == false)
         {

@@ -6,10 +6,11 @@ using UnityEngine;
 
 public class ItemController : MonoBehaviour
 {
-
     [SerializeField] CharacterController.Stats stat;
     [SerializeField] float points;
     [SerializeField] AudioClip itemGrabSound;
+
+    private GameObject spriteMiniMap;
 
     private Transform sprite;
 
@@ -20,6 +21,8 @@ public class ItemController : MonoBehaviour
 
     private void Start()
     {
+        spriteMiniMap = transform.Find("MiniMap Objetive").gameObject;
+
         sprite = transform.GetChild(0);
 
         deltaY = 0.5f;
@@ -31,6 +34,8 @@ public class ItemController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            spriteMiniMap.SetActive(false);
+
             AudioSource.PlayClipAtPoint(itemGrabSound, transform.position);
 
             GameObject go = collision.gameObject;
