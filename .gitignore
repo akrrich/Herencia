@@ -71,4 +71,3 @@ crashlytics-build.properties
 
 # Build del juego para compartir
 Build/*
-!Build/Herencia.zip

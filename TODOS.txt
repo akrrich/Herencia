@@ -1,0 +1,49 @@
+#### BETA 5/7 #####
+
+1. Ataques nuevos:
+	Bosque muerto: Dash
+	
+	El Palacio:
+		no se todavia
+			
+		Franco: Atacar como Victor
+		
+
+2. Escenarios:
+	Todos:
+		armar mapa diario y mapa mejoras
+
+	nivel 2:
+		Armarlo casi todo
+		
+	Nivel 3:
+		Armarlo todo
+		
+3. Dialogos entre personajes
+
+4. Musica y efectos de sonido
+	- a casi todo
+
+5. Efectos de particulas
+	- Al disparar
+	- al recibir daño
+	- al tomar un item
+	
+6. Animaciones
+	- Sin Brazos (Adefecio)
+		Muerte: que quede similar al Cabeza(Aberración)
+		
+	- Franco:
+		Cambiar los tonos de gris por mas oscuros.
+		Falta el brazo
+		
+	- Victor: 
+		que tenga algun detalle en negro en los ojos.
+	
+	
+	- Hacer varios bullets
+	
+	- Props para los niveles
+	
+7. Agregar Fade in y fade out
+	https://www.youtube.com/watch?v=Ox0JCbVIMCQ&t=2s
