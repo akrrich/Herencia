@@ -95,7 +95,7 @@ public class VictorController : CharacterController
     }
     protected override bool IsAttacking()
     {
-        return Input.GetMouseButton(0);
+        return Input.GetMouseButton(0) || Input.GetButton("Square");
     }
     override protected void ExecuteAttack()
     {
