@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28cfa4fe256461846805b0ae378e4ac0, type: 3}
+  m_Name: OldLabMapData
+  m_EditorClassIdentifier: 
+  StartMap: {fileID: 8301965431217913330, guid: 45d414dc11122bc41882b13f2086d7c7, type: 3}
+  MonsterMapList:
+  - {fileID: 8301965431217913330, guid: bf24f9a1acd20f54abeac8a493ca32a6, type: 3}
+  - {fileID: 8301965431217913330, guid: 76213694f4f7ebb4182c5ff2e608c382, type: 3}
+  - {fileID: 8301965431217913330, guid: 6db50d8bee95fb44fb85a0fae67ba023, type: 3}
+  BossMap: {fileID: 5272912667616187011, guid: e3d6bd5a8368aa940bfe6ff0fde3fc5a, type: 3}
+  JournalMap: {fileID: 8301965431217913330, guid: 8cb0b0d601f7bae44b7f6f4c91bf5349, type: 3}
+  BoosterMap: {fileID: 8301965431217913330, guid: 61c4922001a565543a7ece6c6e07d689, type: 3}
+  size: 7
+  minMapCount: 7

@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class EnemyController : CharacterController
 {
-    [Header("Target")]
-    [SerializeField] CharacterController target;
-
     [Header("Sight")]
     [SerializeField] private float seekRadius;
     [SerializeField] private float meleeAttackRadius;
@@ -18,6 +15,9 @@ public class EnemyController : CharacterController
 
     [Header("Attack Type")]
     [SerializeField] private Attack attackType;
+
+    public VictorController target;
+
     public enum Attack
     {
         Melee,
@@ -28,7 +28,6 @@ public class EnemyController : CharacterController
     protected override void Start()
     {
         base.Start();
-        target = GameManager.Instance.Victor;
     }
     protected override bool IsAttacking()
     {

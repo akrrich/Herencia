@@ -5,44 +5,85 @@ using UnityEngine;
 
 public class MapController : MonoBehaviour
 {
-    [SerializeField] DoorController doorUp;
-    [SerializeField] DoorController doorRight;
-    [SerializeField] DoorController doorBottom;
-    [SerializeField] DoorController doorLeft;
+    [Header("Puertas")]
+    [SerializeField] GameObject doorUp;
+    [SerializeField] GameObject doorRight;
+    [SerializeField] GameObject doorBottom;
+    [SerializeField] GameObject doorLeft;
 
+    [Header("Lista Enemigos")]
     [SerializeField] List<EnemyController> enemigos;
 
     private bool hasBeenInitialized;
     private bool cleared;
+
+    public RegularDoorController doorUpController;
+    public RegularDoorController doorRightController;
+    public RegularDoorController doorBottomController;
+    public RegularDoorController doorLeftController;
+
     public bool HasBeenInitialized { get => hasBeenInitialized; }
     public bool Cleared { get => cleared; }
 
+    public enum Doors
+    {
+        Up,
+        Right,
+        Bottom,
+        Left
+    }
+
+    public void SetEnabledSingleDoor(Doors door, bool value)
+    {
+        switch (door)
+        {
+            case Doors.Up:
+                doorUp.SetActive(value); break;
+
+            case Doors.Right:
+                doorRight.SetActive(value); break;
+
+            case Doors.Bottom:
+                doorBottom.SetActive(value); break;
+
+            case Doors.Left:
+                doorLeft.SetActive(value); break;
+        }
+    }
+
+    public void SetEnabledAllDoors(bool value)
+    {
+        doorUp.SetActive(value);
+        doorRight.SetActive(value);
+        doorBottom.SetActive(value);
+        doorLeft.SetActive(value);
+    }
 
     private void HandleDoors(bool open)
     {
-        if (doorUp != null && doorUp.isActiveAndEnabled)
+        if (doorUpController != null && doorUpController.isActiveAndEnabled)
             if (open)
-                doorUp.Open();
+                doorUpController.Open();
             else
-                doorUp.Close();
+                doorUpController.Close();
 
-        if (doorRight != null && doorRight.isActiveAndEnabled)
+        if (doorRightController != null && doorRightController.isActiveAndEnabled)
             if (open)
-                doorRight.Open();
+                doorRightController.Open();
             else
-                doorRight.Close();
+                doorRightController.Close();
 
-        if (doorBottom != null && doorBottom.isActiveAndEnabled)
+        if (doorBottomController != null && doorBottomController.isActiveAndEnabled)
             if (open)
-                doorBottom.Open();
+                doorBottomController.Open();
             else
-                doorBottom.Close();
+                doorBottomController.Close();
 
-        if (doorLeft != null && doorLeft.isActiveAndEnabled)
+        if (doorLeftController != null && doorLeftController.isActiveAndEnabled)
             if (open)
-                doorLeft.Open();
+                doorLeftController.Open();
             else
-                doorLeft.Close();
+                doorLeftController.Close();
     }
     public void InitializeFloor()
     {
@@ -62,7 +103,56 @@ public class MapController : MonoBehaviour
         if (!hasBeenInitialized)
         {
             InitializeFloor();
+            foreach (var enemigo in enemigos)
+            {
+                enemigo.target = GameManager.Instance.VictorInstance;
+            }
         }
+    }
+
+    static public void ConnectDoors(MapController a, MapController b,Doors aDirection)
+    {
+        switch (aDirection)
+        {
+            case Doors.Up:
+                a.SetEnabledSingleDoor(Doors.Bottom, true);
+                b.SetEnabledSingleDoor(Doors.Up, true);
+
+                a.doorBottomController.ConnectsTo = b.doorUpController;
+                b.doorUpController.ConnectsTo = a.doorBottomController;
+                break;
+
+            case Doors.Right:
+                a.SetEnabledSingleDoor(Doors.Right, true);
+                b.SetEnabledSingleDoor(Doors.Left, true);
+
+                a.doorRightController.ConnectsTo = b.doorLeftController;
+                b.doorLeftController.ConnectsTo = a.doorRightController;
+                break;
+
+            case Doors.Bottom:
+                a.SetEnabledSingleDoor(Doors.Up, true);
+                b.SetEnabledSingleDoor(Doors.Bottom, true);
+
+                a.doorUpController.ConnectsTo = b.doorBottomController;
+                b.doorBottomController.ConnectsTo = a.doorUpController;
+                break;
+
+            case Doors.Left:
+                a.SetEnabledSingleDoor(Doors.Left, true);
+                b.SetEnabledSingleDoor(Doors.Right, true);
+
+                a.doorLeftController.ConnectsTo = b.doorRightController;
+                b.doorRightController.ConnectsTo =a.doorLeftController;
+                break;
+        }
+    }
+    private void Awake()
+    {
+        doorUpController = doorUp.GetComponent<RegularDoorController>();
+        doorRightController = doorRight.GetComponent<RegularDoorController>();
+        doorBottomController = doorBottom.GetComponent<RegularDoorController>();
+        doorLeftController = doorLeft.GetComponent<RegularDoorController>();
     }
 
     // Start is called before the first frame update

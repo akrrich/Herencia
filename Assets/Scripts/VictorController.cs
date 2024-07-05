@@ -28,12 +28,13 @@ public class VictorController : CharacterController
 
         destroyGameObjects = FindObjectOfType<DestroyGameObjects>();
 
+        /*
         sliderLife.InitializeBarStat(life, maxLife);
         sliderShield.InitializeBarStat(shield, maxShield);
         sliderMovementSpeed.InitializeBarStat(movementSpeed, maxMovementSpeed);
         sliderAttackSpeed.InitializeBarStat(attackSpeed, maxAttackSpeed);
 
-        UpdateStats();
+        UpdateStats();*/
     }
     private void CheckVictory()
     {
@@ -58,7 +59,7 @@ public class VictorController : CharacterController
     override public void ApplyDamage(float damage)
     {
         base.ApplyDamage(damage);
-        UpdateStats();
+        //UpdateStats();
     }
     private void UpdateStats()
     {

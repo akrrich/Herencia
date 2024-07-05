@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RegularDoorController : DoorController
 {
-    [SerializeField] RegularDoorController ConnectsTo;
+    [SerializeField] public RegularDoorController ConnectsTo;
     [SerializeField] Transform spawnPoint;
 
     public Transform SpawnPoint { get => spawnPoint; }
