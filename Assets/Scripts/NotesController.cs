@@ -12,6 +12,7 @@ public class NotesController : MonoBehaviour
 
     [SerializeField] private VictorController victor;
     private ArmController armController;
+    private VictorMapRotation victorMapRotation;
 
     private GameObject panel;
 
@@ -53,6 +54,7 @@ public class NotesController : MonoBehaviour
         diaryValue.text = 0 + " / " + 10;
 
         armController = victor.GetComponentInChildren<ArmController>();
+        victorMapRotation = victor.GetComponentInChildren<VictorMapRotation>();
     }
 
 
@@ -81,24 +83,26 @@ public class NotesController : MonoBehaviour
 
     private void NoteMenu()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && openNoteMode == false && notesList.Count > 0)
+        if ((Input.GetKeyDown(KeyCode.Q) || Input.GetButtonDown("Triangle")) && !openNoteMode && notesList.Count > 0)
         {
             panel.SetActive(true);
 
             victor.CanMove = false;
             armController.CanMoveArm = false;
+            victorMapRotation.CanRotate = false;
 
             notesList[currentNoteIndex].SetActive(true);
 
             openNoteMode = true;
         }
 
-        else if (Input.GetKeyDown(KeyCode.Q) && openNoteMode == true)
+        else if ((Input.GetKeyDown(KeyCode.Q) || Input.GetButtonDown("Triangle")) && openNoteMode)
         {
             panel.SetActive(false);
 
             victor.CanMove = true;
             armController.CanMoveArm = true;
+            victorMapRotation.CanRotate = true;
 
             notesList[currentNoteIndex].SetActive(false);
 
@@ -119,7 +123,7 @@ public class NotesController : MonoBehaviour
                 notesList[currentNoteIndex].SetActive(true);
             }
 
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 SoundChangeNote();
 

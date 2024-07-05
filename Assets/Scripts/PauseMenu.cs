@@ -53,7 +53,7 @@ public class PauseMenu : MonoBehaviour
 
     private void CheckIfIsPauseOrNot()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && canEnterInPauseMode == true)
+        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Options")) && canEnterInPauseMode == true)
         {
             if (gameInPause == false)
             {
@@ -70,13 +70,13 @@ public class PauseMenu : MonoBehaviour
     {
         panel.SetActive(gameInPause);
 
-        notesController.CanOpenNoteMode = false;
+        victor.CanMove = false;
 
-        armController.CanMoveArm = false;
+        notesController.CanOpenNoteMode = false;
 
         victorMapRotation.CanRotate = false;
 
-        victor.CanMove = false;
+        armController.CanMoveArm = false;
 
         Time.timeScale = 0f;
 

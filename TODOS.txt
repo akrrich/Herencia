@@ -30,20 +30,41 @@
 	- al tomar un item
 	
 6. Animaciones
-	- Sin Brazos (Adefecio)
-		Muerte: que quede similar al Cabeza(Aberración)
+	- Muertes:
+		Falta hacer muerte de los enemigos del nivel 1.
+
+	- Sin Brazos (Adefecio): que quede similar al Cabeza(Aberración) con sangre y esas cosas.
 		
 	- Franco:
 		Cambiar los tonos de gris por mas oscuros.
-		Falta el brazo
+		La muerte de franco que quede arrodillado, todo roto pero sin caer al piso.
+		Falta el brazo.
 		
 	- Victor: 
 		que tenga algun detalle en negro en los ojos.
-	
+		Rehacer arma en resolucion correcta.
+		Revisar si se puede agregar mas pelo a Victor.
 	
 	- Hacer varios bullets
 	
 	- Props para los niveles
+		Nivel 1 (dejarlo como esta)
+		Nivel 2 Bosque muerto
+			- posibles Props
+				- Piedras
+				- Arboles (si queres se puede retocar el arbol que ya se hizo)
+				- Calaveras / huesos
+				- Lapidas
+		Nivel 3 Palacio
+			- Muebles antiguos (mesas/sillas/ )
+			- Lamparas https://i.etsystatic.com/16755079/r/il/496510/4951630568/il_794xN.4951630568_k60v.jpg
+			- Cuadros
+			- Reloj Antiguo https://ae01.alicdn.com/kf/S79df414f89ce4e9687dffa677a8d4e73Z.jpg_640x640Q90.jpg_.webp
+		
+
+	- Items
+		revisar items en general.
+		retocar el tornillo.
 	
 7. Agregar Fade in y fade out
 	https://www.youtube.com/watch?v=Ox0JCbVIMCQ&t=2s
