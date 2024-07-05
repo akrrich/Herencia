@@ -5,7 +5,6 @@ using UnityEngine.TextCore.Text;
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] private VictorController victor;
     [SerializeField] private NotesController notesController;
 
     private VictorMapRotation victorMapRotation;
@@ -13,10 +12,33 @@ public class PauseMenu : MonoBehaviour
 
     private GameObject panel;
 
-
     private bool gameInPause = false;
 
     private bool canEnterInPauseMode = true;
+
+
+    private VictorController victorController;
+
+    private void HandlePersonajeInstanciado(VictorController vc)
+    {
+        victorController = vc;
+        
+        armController = victorController.GetComponentInChildren<ArmController>();
+        victorMapRotation = victorController.GetComponentInChildren<VictorMapRotation>();
+    }
+
+    private void OnEnable()
+    {
+        VictorController.OnPersonajeInstanciado += HandlePersonajeInstanciado;
+    }
+
+    private void OnDisable()
+    {
+        if (victorController != null)
+        {
+            VictorController.OnPersonajeInstanciado -= HandlePersonajeInstanciado;
+        }
+    }
 
 
     public bool GameInPause
@@ -34,22 +56,15 @@ public class PauseMenu : MonoBehaviour
             canEnterInPauseMode = value;
         }
     }
-
-
     private void Start()
     {
         panel = transform.Find("panel").gameObject;
-
-        armController = victor.GetComponentInChildren<ArmController>();
-        victorMapRotation = victor.GetComponentInChildren<VictorMapRotation>();
     }
-
 
     private void Update()
     {
         CheckIfIsPauseOrNot();
     }
-
 
     private void CheckIfIsPauseOrNot()
     {
@@ -70,7 +85,7 @@ public class PauseMenu : MonoBehaviour
     {
         panel.SetActive(gameInPause);
 
-        victor.CanMove = false;
+        victorController.CanMove = false;
 
         notesController.CanOpenNoteMode = false;
 
@@ -95,7 +110,7 @@ public class PauseMenu : MonoBehaviour
         {
             armController.CanMoveArm = true;
 
-            victor.CanMove = true;
+            victorController.CanMove = true;
         }
 
         Time.timeScale = 1f;

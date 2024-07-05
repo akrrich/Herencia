@@ -10,7 +10,6 @@ public class NotesController : MonoBehaviour
 {
     private static List<GameObject> notesList = new List<GameObject>();
 
-    [SerializeField] private VictorController victor;
     private ArmController armController;
     private VictorMapRotation victorMapRotation;
 
@@ -26,6 +25,28 @@ public class NotesController : MonoBehaviour
     private bool openNoteMode = false;
     private bool canOpneNoteMode = true;
 
+
+    private VictorController victorController;
+
+    private void HandlePersonajeInstanciado(VictorController vc)
+    {
+        victorController = vc;
+        armController = victorController.GetComponentInChildren<ArmController>();
+        victorMapRotation = victorController.GetComponentInChildren<VictorMapRotation>();
+    }
+
+    private void OnEnable()
+    {
+        VictorController.OnPersonajeInstanciado += HandlePersonajeInstanciado;
+    }
+
+    private void OnDisable()
+    {
+        if (victorController != null)
+        {
+            VictorController.OnPersonajeInstanciado -= HandlePersonajeInstanciado;
+        }
+    }
 
     public bool CanOpenNoteMode
     {
@@ -46,17 +67,12 @@ public class NotesController : MonoBehaviour
 
     private void Start()
     {
-        panel = transform.Find("Panel").gameObject;
-
         diaryValue = GetComponentInChildren<TMP_Text>();
         changeNote = GetComponent<AudioSource>();
 
-        diaryValue.text = 0 + " / " + 10;
-
-        armController = victor.GetComponentInChildren<ArmController>();
-        victorMapRotation = victor.GetComponentInChildren<VictorMapRotation>();
+        diaryValue.text = 0 + " / " + 12;
+        panel = transform.Find("Panel").gameObject;
     }
-
 
     private void Update()
     {
@@ -87,7 +103,7 @@ public class NotesController : MonoBehaviour
         {
             panel.SetActive(true);
 
-            victor.CanMove = false;
+            victorController.CanMove = false;
             armController.CanMoveArm = false;
             victorMapRotation.CanRotate = false;
 
@@ -100,7 +116,7 @@ public class NotesController : MonoBehaviour
         {
             panel.SetActive(false);
 
-            victor.CanMove = true;
+            victorController.CanMove = true;
             armController.CanMoveArm = true;
             victorMapRotation.CanRotate = true;
 
@@ -146,7 +162,7 @@ public class NotesController : MonoBehaviour
     {
         for (int i = 0; i < notesList.Count; i++)
         {
-            diaryValue.text = (i + 1) + " / " + 10;
+            diaryValue.text = (i + 1) + " / " + 12;
         }
     }
 }

@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.UIElements;
-using Random = UnityEngine.Random;
 
 public class MapGeneratorController : MonoBehaviour
 {
+#if EDITOR
     [CustomEditor(typeof(MapGeneratorController))]
     public class MyScriptEditor : Editor
     {
@@ -24,6 +22,7 @@ public class MapGeneratorController : MonoBehaviour
             }
         }
     }
+#endif
     internal class CardinalPoints
     {
         public HashSet<int> north;
@@ -114,6 +113,9 @@ public class MapGeneratorController : MonoBehaviour
 
     [Header("Map Data")]
     [SerializeField] ChapterMapData chapterMapData;
+    [SerializeField] int ChapterId;
+
+
 
     [Header("Grid settings")]
     [SerializeField] Transform origin;
@@ -401,8 +403,12 @@ public class MapGeneratorController : MonoBehaviour
 
                     grid[y, x].placedMap = newMap;
                     GameManager.Instance.startingMap = newMap;
+
+ 
                     VictorController victor = Instantiate(GameManager.Instance.VictorPrefab, newMap.transform.position, Quaternion.identity);
                     GameManager.Instance.VictorInstance = victor;
+                    
+
                 }
                 else
                 {
@@ -492,5 +498,10 @@ public class MapGeneratorController : MonoBehaviour
 
         PlaceMaps();
         PlaceDoors();
+
+        if (ChapterId != 0)
+        {
+            // GameManager.Instance.VictorInstance.transform.position = GameManager.Instance.startingMap.transform.position;
+        }
     }
 }

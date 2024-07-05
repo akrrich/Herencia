@@ -8,18 +8,24 @@ public class Notes : MonoBehaviour
 
     private GameObject spriteMiniMap;
 
-    private AudioSource audioGetNote;
-    private Renderer objectRenderer;
-    private Collider2D objectCollider;
+    [SerializeField] private AudioClip audioGetNote;
 
+    private Transform sprite;
+    private float deltaY;
+    private float currentDelta;
+    private int direction;
+
+    private ParticleSystem ps;
 
     private void Start()
     {
+        ps = GetComponentInChildren<ParticleSystem>();
         spriteMiniMap = transform.Find("MiniMap Objetive").gameObject;
 
-        objectCollider = GetComponent<Collider2D>();   
-        objectRenderer = GetComponent<Renderer>();
-        audioGetNote = GetComponent<AudioSource>();
+        sprite = transform.GetChild(0);
+        deltaY = 0.5f;
+        currentDelta = 0;
+        direction = 1;
     }
 
 
@@ -27,22 +33,37 @@ public class Notes : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            audioGetNote.Play();
-
-            StartCoroutine(DestroyAfterSound());
-
             spriteMiniMap.SetActive(false);
-            objectRenderer.enabled = false;
-            objectCollider.enabled = false;
+
+            AudioSource.PlayClipAtPoint(audioGetNote, transform.position);
+
+            GameObject go = collision.gameObject;
+
+            ps.transform.parent = null;
+
+            // Optionally, you can set the particle system to destroy itself after it has finished emitting
+            Destroy(ps.gameObject, ps.main.duration);
 
             NotesController.AddNote(realNote);
+            Destroy(this.gameObject);
         }
     }
 
-    private IEnumerator DestroyAfterSound()
+    private void Hover()
     {
-        yield return new WaitForSeconds(audioGetNote.clip.length);
+        currentDelta += Time.deltaTime * direction;
 
-        Destroy(gameObject);
+        if (Mathf.Abs(currentDelta) > deltaY)
+        {
+            currentDelta = 0;
+            direction = -direction;
+        }
+
+        sprite.transform.position += new Vector3(0, Time.deltaTime * direction, 0);
+    }
+
+    private void Update()
+    {
+        Hover();
     }
 }

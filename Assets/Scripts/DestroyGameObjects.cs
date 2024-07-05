@@ -5,18 +5,30 @@ using UnityEngine;
 public class DestroyGameObjects : MonoBehaviour
 {
     public UiController UiController;
-    public VictorController victorController;
     public GameManager gameManager;
+    private VictorController victorController;
 
-    // esto es temporal
-    public Map bosqueMuerto;
+    private void HandlePersonajeInstanciado(VictorController vc)
+    {
+        victorController = vc;
+    }
 
+    private void OnEnable()
+    {
+        VictorController.OnPersonajeInstanciado += HandlePersonajeInstanciado;
+    }
+
+    private void OnDisable()
+    {
+        if (victorController != null)
+        {
+            VictorController.OnPersonajeInstanciado -= HandlePersonajeInstanciado;
+        }
+    }
     public void DestroyObjects()
     {
         Destroy(UiController.gameObject);
         Destroy(victorController.gameObject, 1f);
         Destroy(gameManager.gameObject);
-
-        Destroy(bosqueMuerto.gameObject);
     }
 }

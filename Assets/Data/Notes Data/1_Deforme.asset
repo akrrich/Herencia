@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8feab222c6ca99c48a6bd2fcca1552b2, type: 3}
+  m_Name: 1_Deforme
+  m_EditorClassIdentifier: 
+  title: Deforme
+  text: "Hoy he contemplado con pesar mi primera creaci\xF3n, una criatura lenta
+    y deforme que emergi\xF3 de mis experimentos. A pesar de todos mis esfuerzos
+    y conocimientos, no pude evitar que se convirtiera en una manifestaci\xF3n grotesca
+    de mis errores.  Sus movimientos son torpes y descoordinados, reflejando confusi\xF3n
+    y dolor. Me enfrento a la realidad de mi incapacidad para controlar las fuerzas
+    que desato. Cada intento por corregir mi curso parece empeorar las cosas, sumiendo
+    este lugar en un caos de esperanza y desesperaci\xF3n."
+  cover: {fileID: 21300000, guid: 983f94eb58bff744a944914ff12d378c, type: 3}
+  id: 1
+  discovered: 0

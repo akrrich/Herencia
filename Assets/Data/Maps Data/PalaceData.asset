@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28cfa4fe256461846805b0ae378e4ac0, type: 3}
+  m_Name: PalaceData
+  m_EditorClassIdentifier: 
+  StartMap: {fileID: 8301965431217913330, guid: 98af028f30cf9c74d839443357fe5a5f, type: 3}
+  MonsterMapList:
+  - {fileID: 8301965431217913330, guid: 90813eb534e6c8a429234b94918c894c, type: 3}
+  - {fileID: 8301965431217913330, guid: a7b7e1163b08c0e41a6bb14789668667, type: 3}
+  - {fileID: 8301965431217913330, guid: ba6b7aa9c3f4e3b40a548041b3064585, type: 3}
+  BossMap: {fileID: 5272912667616187011, guid: 6fc1bf12a180f394489d4b1c18bd2579, type: 3}
+  JournalMap: {fileID: 8301965431217913330, guid: b1ffe2c445fcc7341b31b977ac51f535, type: 3}
+  BoosterMap: {fileID: 8301965431217913330, guid: 40058b56e170d4644ac95c9c118b5ed4, type: 3}
+  size: 15
+  minMapCount: 20

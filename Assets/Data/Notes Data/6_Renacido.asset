@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8feab222c6ca99c48a6bd2fcca1552b2, type: 3}
+  m_Name: 6_Renacido
+  m_EditorClassIdentifier: 
+  title: Renacido
+  text: "Hoy me he encontrado con un lobo renacido, pero en lugar de compasi\xF3n,
+    siento una profunda repulsi\xF3n hacia esta criatura imperfecta. Como si hubiera
+    sido tra\xEDdo de vuelta con un prop\xF3sito que a\xFAn no comprendo.  Este encuentro
+    me confronta con las profundidades de mi propio poder y los l\xEDmites de mi
+    entendimiento. \xBFQu\xE9 fuerzas he desencadenado para traer de vuelta a esta
+    bestia condenada a una existencia de tormento?"
+  cover: {fileID: 21300000, guid: 88fbd168c68949d40af3cc0118d8ae52, type: 3}
+  id: 6
+  discovered: 0

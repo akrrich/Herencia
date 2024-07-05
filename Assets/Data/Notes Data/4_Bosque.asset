@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8feab222c6ca99c48a6bd2fcca1552b2, type: 3}
+  m_Name: 4_Bosque
+  m_EditorClassIdentifier: 
+  title: Bosque Muerto
+  text: "Hoy me adentro en un bosque muerto, devastado por un fen\xF3meno desconocido
+    que ha dejado una marca indeleble en su coraz\xF3n. Los \xE1rboles yacen retorcidos
+    y marchitos, sus hojas y ramas consumidas por una fuerza que a\xFAn no comprendo.
+    Este bosque, una vez vivo y vibrante, ahora yace en silencio como un testigo
+    mudo de mi soberbia.  El peso de mis decisiones y la responsabilidad por este
+    desastre me atormentan."
+  cover: {fileID: 21300000, guid: 68fcc9ae35ae24a4290baed1f19979cb, type: 3}
+  id: 4
+  discovered: 0

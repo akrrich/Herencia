@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8feab222c6ca99c48a6bd2fcca1552b2, type: 3}
+  m_Name: 11_Franco
+  m_EditorClassIdentifier: 
+  title: Franco
+  text: "Lo he logrado. Frente a m\xED est\xE1 mi obra maestra, lista para recibir
+    vida. Con temor y ansiedad, me conecto a la m\xE1quina, preparado para insuflarle
+    la chispa de vida a esta creaci\xF3n que tanto he anhelado.  Pero algo sale mal.
+    La m\xE1quina zumba y chisporrotea con una energ\xEDa que parece descontrolada.
+    Mi creaci\xF3n reacciona de manera inesperada, sus movimientos se vuelven err\xE1ticos,
+    su respiraci\xF3n agitada y [...] *La \xFAltima parte del diario est\xE1 quemada
+    y no puede leerse* "
+  cover: {fileID: 21300000, guid: 9726480501799f4439b9e987df14c664, type: 3}
+  id: 11
+  discovered: 0

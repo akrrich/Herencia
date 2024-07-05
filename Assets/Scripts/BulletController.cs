@@ -14,10 +14,14 @@ public class BulletController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 direction;
 
+    private ParticleSystem ps;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0f;
+
+        ps = GetComponentInChildren<ParticleSystem>();
     }
 
     private void Update()
@@ -33,6 +37,12 @@ public class BulletController : MonoBehaviour
     private void _Destroy()
     {
         AudioSource.PlayClipAtPoint(splashSound, transform.position);
+
+        ps.transform.parent = null;
+
+        // Optionally, you can set the particle system to destroy itself after it has finished emitting
+        Destroy(ps.gameObject, ps.main.duration);
+
         Destroy(this.gameObject);
     }
 

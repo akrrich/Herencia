@@ -53,7 +53,7 @@ public class EnemyController : CharacterController
     }
     private void BulletAttack()
     {
-        Vector2 shootDirection = (target.transform.position - transform.position).normalized;
+        Vector2 shootDirection = (target.transform.position - bulletSpawner.position).normalized;
 
         BulletController newBullet = Instantiate(bullet, bulletSpawner.position, Quaternion.identity);
 

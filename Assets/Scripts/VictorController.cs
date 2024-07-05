@@ -15,26 +15,69 @@ public class VictorController : CharacterController
     [SerializeField] private SliderController sliderMovementSpeed;
     [SerializeField] private SliderController sliderAttackSpeed;
 
+    public struct VictorStats
+    {
+        public float maxLife;
+        public float life;
+        public float maxShield;
+        public float shield;
+        public float maxMovementSpeed;
+        public float movementSpeed;
+        public float maxAttackSpeed;
+        public float attackSpeed;
+    }
+
+    public VictorStats GetStats()
+    {
+        var stats = new VictorStats();
+
+        stats.maxLife = maxLife;
+        stats.life = life;
+        stats.maxShield = maxShield;
+        stats.shield = shield;
+        stats.maxMovementSpeed = maxMovementSpeed;
+        stats.movementSpeed = movementSpeed;
+        stats.maxAttackSpeed = maxAttackSpeed;
+        stats.attackSpeed = attackSpeed;
+
+        return stats;
+
+    }
+
+    public delegate void StatsChangedHandler(VictorStats stats);
+    public event StatsChangedHandler OnStatsChanged;
+
+
+    public delegate void JournalNotePickedHandler(int noteId, bool isJournal);
+    public event JournalNotePickedHandler OnJournalNotePicked;
+
+    public static System.Action<VictorController> OnPersonajeInstanciado;
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        // DontDestroyOnLoad(gameObject);
+        OnPersonajeInstanciado?.Invoke(this);
+    }
+    // called first
+    
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        this.transform.position = GameManager.Instance.startingMap.transform.position;
     }
 
-
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        
+    }
+    
     protected override void Start()
     {
         base.Start();
 
         destroyGameObjects = FindObjectOfType<DestroyGameObjects>();
 
-        /*
-        sliderLife.InitializeBarStat(life, maxLife);
-        sliderShield.InitializeBarStat(shield, maxShield);
-        sliderMovementSpeed.InitializeBarStat(movementSpeed, maxMovementSpeed);
-        sliderAttackSpeed.InitializeBarStat(attackSpeed, maxAttackSpeed);
-
-        UpdateStats();*/
+        OnStatsChanged?.Invoke(GetStats());
     }
     private void CheckVictory()
     {
@@ -55,18 +98,56 @@ public class VictorController : CharacterController
         Invoke("GoToLoose", 2f);
 
     }
-
     override public void ApplyDamage(float damage)
     {
         base.ApplyDamage(damage);
-        //UpdateStats();
+        OnStatsChanged?.Invoke(GetStats());
     }
-    private void UpdateStats()
+
+    private IEnumerator PickUpColor(Stats type)
     {
-        sliderLife.ChangeActualValue(life);
-        sliderShield.ChangeActualValue(shield);
-        sliderMovementSpeed.ChangeActualValue(movementSpeed);
-        sliderAttackSpeed.ChangeActualValue(attackSpeed);
+        Color effectColor = Color.green;
+        switch (type)
+        {
+            case Stats.LifePoints:
+                effectColor = Color.green;
+                break;
+
+            case Stats.Shield:
+                effectColor = Color.blue;
+                break;
+
+            case Stats.characterSpeed:
+                effectColor = Color.yellow;
+                break;
+
+            case Stats.attackSpeed:
+                effectColor = Color.magenta;
+                break;
+        }
+
+        // Duración del efecto
+        float duration = 0.25f;
+        // Tiempo transcurrido
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            // Interpolación entre rojo y el color original
+            spriteRenderer.color = Color.Lerp(effectColor, Color.white, elapsed / duration);
+            // Incrementar el tiempo transcurrido
+            elapsed += Time.deltaTime;
+            // Esperar hasta el próximo frame
+            yield return null;
+        }
+
+        // Asegurar que el color vuelva al original
+        spriteRenderer.color = Color.white;
+    }
+
+    internal void PickUpJournalNote(int noteId, bool isJournal)
+    {
+        OnJournalNotePicked?.Invoke(noteId, isJournal);
     }
 
     internal void PickUpItem(Stats stats, float points)
@@ -91,8 +172,8 @@ public class VictorController : CharacterController
                 this.attackSpeed = Mathf.Clamp(this.attackSpeed + points, 0, maxAttackSpeed);
                 break;
         }
-
-        UpdateStats();
+        StartCoroutine(PickUpColor(stats));
+        OnStatsChanged?.Invoke(GetStats());
     }
     protected override bool IsAttacking()
     {

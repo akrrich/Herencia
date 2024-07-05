@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8feab222c6ca99c48a6bd2fcca1552b2, type: 3}
+  m_Name: 8_Palacio
+  m_EditorClassIdentifier: 
+  title: Palacio
+  text: "Mi morada, antigua mansi\xF3n, Fr\xEDa y solitaria, donde las sombras danzan
+    en cada rinc\xF3n como testigos silenciosos de mis m\xE1s oscuros experimentos.
+    Aqu\xED residen las herramientas m\xE1s avanzadas que he creado para desafiar
+    los l\xEDmites entre la vida y la muerte. Me sumerjo en el abismo de la ciencia
+    prohibida, cada descubrimiento es una danza macabra con el destino. Aqu\xED,
+    en este santuario de conocimiento prohibido, trazo el camino hacia el horizonte
+    desconocido que solo mis sue\xF1os m\xE1s oscuros se atreven a explorar."
+  cover: {fileID: 21300000, guid: 0047e9e15ed15b34a883d400ce909744, type: 3}
+  id: 8
+  discovered: 0

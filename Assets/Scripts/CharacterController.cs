@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public abstract class CharacterController : MonoBehaviour
@@ -10,7 +11,7 @@ public abstract class CharacterController : MonoBehaviour
     private GameObject spriteMiniMap;
 
     private AnimatorOverrideController animatorOverrideController;
-    
+
     [Header("Animation Clips")]
     [SerializeField] private AnimationClip idleClip;
     [SerializeField] private AnimationClip movingClip;
@@ -52,6 +53,9 @@ public abstract class CharacterController : MonoBehaviour
     // pause
     private bool canMove = true;
 
+    // Sprite Renderer
+    protected SpriteRenderer spriteRenderer;
+
     public bool IsAlive { get => life > 0; }
     public bool IsMoving { get => rb.velocity.magnitude > 0.1; }
     public bool HasShield { get => shield > 0; }
@@ -89,7 +93,7 @@ public abstract class CharacterController : MonoBehaviour
     }
     protected virtual void Die()
     {
-        if(deathSound != null)
+        if (deathSound != null)
             AudioSource.PlayClipAtPoint(deathSound, transform.position);
         this.boxCollider.enabled = false;
 
@@ -124,16 +128,44 @@ public abstract class CharacterController : MonoBehaviour
         }
     }
 
+    private IEnumerator RecieveDamageColor(bool shield)
+    {
+        Color effectColor = Color.red;
+
+        if (shield)
+            effectColor = Color.cyan;
+
+        // Duración del efecto
+        float duration = 0.25f;
+        // Tiempo transcurrido
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            // Interpolación entre rojo y el color original
+            spriteRenderer.color = Color.Lerp(effectColor, Color.white, elapsed / duration);
+            // Incrementar el tiempo transcurrido
+            elapsed += Time.deltaTime;
+            // Esperar hasta el próximo frame
+            yield return null;
+        }
+
+        // Asegurar que el color vuelva al original
+        spriteRenderer.color = Color.white;
+    }
+
     public virtual void ApplyDamage(float damage)
     {
         float leftover = shield - damage;
 
         if (leftover >= 0) {
             shield -= damage;
+            StartCoroutine(RecieveDamageColor(shield: true));
         } else
         {
             shield = 0;
             life += leftover;
+            StartCoroutine(RecieveDamageColor(shield: false));
         }
 
         UpdateStates();
@@ -147,6 +179,7 @@ public abstract class CharacterController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
         spriteMiniMap = transform.Find("MiniMap Objetive").gameObject;
 

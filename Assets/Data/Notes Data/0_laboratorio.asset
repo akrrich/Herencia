@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8feab222c6ca99c48a6bd2fcca1552b2, type: 3}
+  m_Name: 0_laboratorio
+  m_EditorClassIdentifier: 
+  title: Viejo Laboratorio
+  text: "Mi laboratorio es un lugar l\xFAgubre y fr\xEDo. Rodeado de instrumentos
+    quir\xFArgicos y frascos con l\xEDquidos extra\xF1os, s\xE9 que lo que hago es
+    peligroso, pero no puedo detenerme. Este lugar refleja mis miedos y deseos m\xE1s
+    oscuros. Cada experimento me acerca m\xE1s al abismo, pero los resultados siempre
+    son insatisfactorios. \xBFEs este mi castigo por desafiar la naturaleza? Solo
+    el tiempo lo dir\xE1. "
+  cover: {fileID: 21300000, guid: 2babbcc80c53d294ab869c747e22610b, type: 3}
+  id: 0
+  discovered: 0

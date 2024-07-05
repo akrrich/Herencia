@@ -18,13 +18,15 @@ public class ItemController : MonoBehaviour
     private float currentDelta;
     private int direction;
 
+    private ParticleSystem ps;
 
     private void Start()
     {
+        ps = GetComponentInChildren<ParticleSystem>();
+
         spriteMiniMap = transform.Find("MiniMap Objetive").gameObject;
 
         sprite = transform.GetChild(0);
-
         deltaY = 0.5f;
         currentDelta = 0;
         direction = 1;
@@ -42,6 +44,12 @@ public class ItemController : MonoBehaviour
             var vc = go.GetComponent<VictorController>();
 
             vc.PickUpItem(stat, points);
+
+            ps.transform.parent = null;
+
+            // Optionally, you can set the particle system to destroy itself after it has finished emitting
+            Destroy(ps.gameObject, ps.main.duration);
+
 
             Destroy(this.gameObject);
         }

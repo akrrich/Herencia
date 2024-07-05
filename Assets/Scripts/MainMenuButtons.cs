@@ -27,7 +27,7 @@ public class MainMenuButtons : MonoBehaviour
             if (counterForPlay > 0.35)
             {
                 NotesController.CreateNewList();
-                SceneManager.LoadScene("LaboratorioAbandonado");
+                SceneManager.LoadScene("Laboratorio2");
             }
         }
 

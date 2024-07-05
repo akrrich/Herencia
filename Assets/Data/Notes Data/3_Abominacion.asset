@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8feab222c6ca99c48a6bd2fcca1552b2, type: 3}
+  m_Name: 3_Abominacion
+  m_EditorClassIdentifier: 
+  title: Abominacion
+  text: "Mi \xFAltimo experimento ha resultado en una abominaci\xF3n con cuernos,
+    una criatura incre\xEDblemente agresiva. Cada intento por guiar mis creaciones
+    hacia la perfecci\xF3n parece sumergirlas m\xE1s en el caos y la violencia. 
+    Esta criatura, con su ferocidad y poder\xEDo f\xEDsico, me enfrenta directamente
+    a mis propios l\xEDmites como cient\xEDfico. En mi af\xE1n por desafiar la naturaleza,
+    he desatado fuerzas que escapan a mi control y comprensi\xF3n."
+  cover: {fileID: 21300000, guid: b0261ca3a35e64741ac40803edfaa682, type: 3}
+  id: 3
+  discovered: 0

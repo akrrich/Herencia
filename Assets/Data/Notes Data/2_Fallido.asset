@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8feab222c6ca99c48a6bd2fcca1552b2, type: 3}
+  m_Name: 2_Fallido
+  m_EditorClassIdentifier: 
+  title: Fallido
+  text: "Otro experimento fallido ha dado lugar a una criatura que escupe \xE1cido.
+    Mis intentos por controlar las fuerzas de la naturaleza han resultado en una
+    creaci\xF3n peligrosa y descontrolada.  Esta criatura, con su capacidad de destrucci\xF3n
+    y caos, refleja mi frustraci\xF3n y mis l\xEDmites como cient\xEDfico. \xBFC\xF3mo
+    puedo contener a esta criatura sin causar m\xE1s da\xF1o?  El peso de mis decisiones
+    y la imposibilidad de deshacer lo hecho me atormentan. \xBFQu\xE9 ser\xE1 de
+    m\xED si no puedo enmendar estas creaciones indomables?"
+  cover: {fileID: 21300000, guid: c124fea471feff14cbea6bbea782cbcf, type: 3}
+  id: 2
+  discovered: 0

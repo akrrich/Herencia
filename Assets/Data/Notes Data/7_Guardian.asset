@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8feab222c6ca99c48a6bd2fcca1552b2, type: 3}
+  m_Name: 7_Guardian
+  m_EditorClassIdentifier: 
+  title: Protector
+  text: "Me he encontrado con un oso de gran tama\xF1o y agresividad descomunal.
+    Su furia despierta en m\xED una sorpresa mezclada con un atisbo de inspiraci\xF3n.
+    En su fiera presencia, empiezo a vislumbrar la forma de alcanzar mi fin \xFAltimo. 
+    Este encuentro me confronta con la necesidad de dominar las fuerzas naturales
+    de manera m\xE1s eficaz. \xBFC\xF3mo puedo utilizar la ferocidad de esta bestia
+    para avanzar en mis experimentos, sin desatar m\xE1s destrucci\xF3n?  El bosque,
+    testigo silencioso de mis intentos y fracasos, parece ofrecer pistas ocultas
+    que ahora debo descifrar."
+  cover: {fileID: 21300000, guid: b2082c4cf4193af48b37e10b8112c72d, type: 3}
+  id: 7
+  discovered: 0

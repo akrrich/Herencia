@@ -6,6 +6,7 @@ using UnityEngine;
 public class MapController : MonoBehaviour
 {
     [Header("Puertas")]
+    [SerializeField] GameObject doorBoss;
     [SerializeField] GameObject doorUp;
     [SerializeField] GameObject doorRight;
     [SerializeField] GameObject doorBottom;
@@ -17,6 +18,7 @@ public class MapController : MonoBehaviour
     private bool hasBeenInitialized;
     private bool cleared;
 
+    public BossDoorController doorBossController;
     public RegularDoorController doorUpController;
     public RegularDoorController doorRightController;
     public RegularDoorController doorBottomController;
@@ -30,7 +32,8 @@ public class MapController : MonoBehaviour
         Up,
         Right,
         Bottom,
-        Left
+        Left,
+        Boss
     }
 
     public void SetEnabledSingleDoor(Doors door, bool value)
@@ -48,6 +51,9 @@ public class MapController : MonoBehaviour
 
             case Doors.Left:
                 doorLeft.SetActive(value); break;
+
+            case Doors.Boss:
+                doorBoss.SetActive(value); break;
         }
     }
 
@@ -84,6 +90,12 @@ public class MapController : MonoBehaviour
                 doorLeftController.Open();
             else
                 doorLeftController.Close();
+
+        if (doorBossController != null && doorBossController.isActiveAndEnabled)
+            if (open)
+                doorBossController.Open();
+            else
+                doorBossController.Close();
     }
     public void InitializeFloor()
     {
@@ -149,6 +161,9 @@ public class MapController : MonoBehaviour
     }
     private void Awake()
     {
+        if(doorBoss != null)
+            doorBossController = doorBoss.GetComponent<BossDoorController>();
+
         doorUpController = doorUp.GetComponent<RegularDoorController>();
         doorRightController = doorRight.GetComponent<RegularDoorController>();
         doorBottomController = doorBottom.GetComponent<RegularDoorController>();

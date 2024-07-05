@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8feab222c6ca99c48a6bd2fcca1552b2, type: 3}
+  m_Name: 10_Adefecio
+  m_EditorClassIdentifier: 
+  title: Adefecio
+  text: "Hoy he cruzado los l\xEDmites de la \xE9tica y la moral en la b\xFAsqueda
+    de mi objetivo final. He creado un ser, un engendro vivo pero carente de alma.
+    Por fin veo la respuesta que he buscado durante tanto tiempo.  Este ser, me confronta
+    con una profunda verdad. Para avanzar, debo cosechar la vida de otro ser vivo.
+    Las preguntas sobre el precio que pagar\xE9 por mis actos me atormentan, pero
+    el conocimiento prohibido me llama como un faro en la oscuridad.  Aqu\xED, en
+    el umbral entre lo humano y lo divino, me encuentro a m\xED mismo dispuesto a
+    cruzar l\xEDmites que otros no se atrever\xEDan a considerar."
+  cover: {fileID: 21300000, guid: d2a773c96aef2b647a36835513b7de29, type: 3}
+  id: 10
+  discovered: 0
