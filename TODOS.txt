@@ -1,70 +1,71 @@
-#### BETA 5/7 #####
+#### Final 20/7 #####
 
 1. Ataques nuevos:
-	Bosque muerto: Dash
+	Bosque muerto: 
+		1. Dash
+		2. Pisotón
 	
 	El Palacio:
-		no se todavia
-			
-		Franco: Atacar como Victor
+		1. Onda expansiva (sin brazos)
+		2. Triple dispado (Cabeza)
+		3. Franco: Atacar como Victor + todos los demás
 		
+2. Balanceo
+	Vida, ataque y velocidad de todos los enemigos.
 
-2. Escenarios:
-	Todos:
-		armar mapa diario y mapa mejoras
+3. Sonidos
+	Agregar sonidos a las distintas acciones de los enemigos.
+	Musica.
 
-	nivel 2:
-		Armarlo casi todo
-		
-	Nivel 3:
-		Armarlo todo
-		
-3. Dialogos entre personajes
+4. Escenarios:
+	Revelar mapa de a 1 por vez.
+	Hoja del diario en el cuartro del diario revela todo el mapa (en grisado).
+	Revisar Balanceo.
+	(Opcional) agregar más templates
 
-4. Musica y efectos de sonido
-	- a casi todo
+5. Puntero del mouse
+	Hacer que se oculte el mouse por defecto.
+	Mostrar un puntero personalizado.
+	Revisar el project settings.
 
-5. Efectos de particulas
-	- Al disparar
-	- al recibir daño
-	- al tomar un item
+6. Pantalla de créditos
+	Agregar al menú principal
+	y cuando se gana el juego
+
+7. Cinemáticas
+	Agregar cinématicas al principio de cada nivel
+	al enfrentar un boss
+	al terminar el juego
+
+8. Dialogos entre personajes
+	Terminar de implementar
+	Agregar dialogos al principio del juego.
+	Antes de cada boss.
+	Al principio y al final de Franco.
+
+9. Manualsito con las teclas del juego
 	
-6. Animaciones
-	- Muertes:
-		Falta hacer muerte de los enemigos del nivel 1.
+10. Arte y animaciones
+	- Revisar animaciones de los enemigos del juego.
+		- Deforme
+		- Fallido
+		- Abominación
 
-	- Sin Brazos (Adefecio): que quede similar al Cabeza(Aberración) con sangre y esas cosas.
-		
-	- Franco:
-		Cambiar los tonos de gris por mas oscuros.
-		La muerte de franco que quede arrodillado, todo roto pero sin caer al piso.
-		Falta el brazo.
-		
-	- Victor: 
-		que tenga algun detalle en negro en los ojos.
-		Rehacer arma en resolucion correcta.
-		Revisar si se puede agregar mas pelo a Victor.
-	
-	- Hacer varios bullets
-	
-	- Props para los niveles
-		Nivel 1 (dejarlo como esta)
-		Nivel 2 Bosque muerto
-			- posibles Props
-				- Piedras
-				- Arboles (si queres se puede retocar el arbol que ya se hizo)
-				- Calaveras / huesos
-				- Lapidas
-		Nivel 3 Palacio
-			- Muebles antiguos (mesas/sillas/ )
-			- Lamparas https://i.etsystatic.com/16755079/r/il/496510/4951630568/il_794xN.4951630568_k60v.jpg
-			- Cuadros
-			- Reloj Antiguo https://ae01.alicdn.com/kf/S79df414f89ce4e9687dffa677a8d4e73Z.jpg_640x640Q90.jpg_.webp
-		
+		- Mancillado
+		- Renacido
+		- Guardian del bosque muerto
 
-	- Items
-		revisar items en general.
-		retocar el tornillo.
+		- Aberración
+		- Adefecio
+		- Franco
+
+	- Escenarios.
+		Nivel 1:
+			Props de laboratorio abandonado.
+
 	
-7. Agregar Fade in y fade out
+11. Agregar fade out
 	https://www.youtube.com/watch?v=Ox0JCbVIMCQ&t=2s
+
+
+12. Subir a Itch.io
