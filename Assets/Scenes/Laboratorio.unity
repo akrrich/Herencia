@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &994084744
+--- !u!1001 &1922154276790892423
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -141,6 +141,10 @@ PrefabInstance:
     - target: {fileID: 1922154275362500939, guid: bf5d948564980494f9ae091ee66019c8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922154275854639404, guid: bf5d948564980494f9ae091ee66019c8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1922154276068265230, guid: bf5d948564980494f9ae091ee66019c8, type: 3}
       propertyPath: m_RootOrder
@@ -190,14 +194,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneObjects
       objectReference: {fileID: 0}
-    - target: {fileID: 1922154276152564186, guid: bf5d948564980494f9ae091ee66019c8, type: 3}
-      propertyPath: ChapterId
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1922154276152564186, guid: bf5d948564980494f9ae091ee66019c8, type: 3}
-      propertyPath: chapterMapData
-      value: 
-      objectReference: {fileID: 11400000, guid: f01ea4356e322764ea5a0d962a2fc3cd, type: 2}
     - target: {fileID: 1922154276878004125, guid: bf5d948564980494f9ae091ee66019c8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

@@ -10,13 +10,6 @@ public class JournalNoteController : MonoBehaviour
     [SerializeField] AudioClip itemGrabSound;
 
     private GameObject spriteMiniMap;
-
-    private Transform sprite;
-
-    private float deltaY;
-    private float currentDelta;
-    private int direction;
-
     private ParticleSystem ps;
 
     private void Start()
@@ -24,11 +17,6 @@ public class JournalNoteController : MonoBehaviour
         ps = GetComponentInChildren<ParticleSystem>();
 
         spriteMiniMap = transform.Find("MiniMap Objetive").gameObject;
-
-        sprite = transform.GetChild(0);
-        deltaY = 0.5f;
-        currentDelta = 0;
-        direction = 1;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -49,23 +37,5 @@ public class JournalNoteController : MonoBehaviour
             Destroy(ps.gameObject, ps.main.duration);
             Destroy(this.gameObject);
         }
-    }
-
-    private void Hover()
-    {
-        currentDelta += Time.deltaTime * direction;
-
-        if (Mathf.Abs(currentDelta) > deltaY)
-        {
-            currentDelta = 0;
-            direction = -direction;
-        }
-
-        sprite.transform.position += new Vector3(0, Time.deltaTime * direction, 0);
-    }
-
-    private void Update()
-    {
-        Hover();
     }
 }

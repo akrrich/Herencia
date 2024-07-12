@@ -809,7 +809,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1468182446}
         m_TargetAssemblyTypeName: MainMenuButtons, Assembly-CSharp
-        m_MethodName: MainMenuButton
+        m_MethodName: MainMeniButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -887,8 +887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f45f918658c8474caa8ae6136723f8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  optionSound: {fileID: 1468182448}
-  buttonPlay: {fileID: 1459439981}
+  actionSound: {fileID: 1468182448}
 --- !u!4 &1468182447
 Transform:
   m_ObjectHideFlags: 0
@@ -914,7 +913,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d04fd31828b572141b8d21b914292bff, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 334df0e7929c6074d843abfa7ad33f13, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

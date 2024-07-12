@@ -103,8 +103,6 @@ public class NotesController : MonoBehaviour
         {
             panel.SetActive(true);
 
-            victorController.CanMove = false;
-            armController.CanMoveArm = false;
             victorMapRotation.CanRotate = false;
 
             notesList[currentNoteIndex].SetActive(true);
@@ -116,8 +114,6 @@ public class NotesController : MonoBehaviour
         {
             panel.SetActive(false);
 
-            victorController.CanMove = true;
-            armController.CanMoveArm = true;
             victorMapRotation.CanRotate = true;
 
             notesList[currentNoteIndex].SetActive(false);

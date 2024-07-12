@@ -9,17 +9,6 @@ public class ArmController : MonoBehaviour
     private float localScaleRight;
     private float localScaleLeft;
 
-    private bool canMoveArm = true;
-
-
-    public bool CanMoveArm
-    {
-        set
-        {
-            canMoveArm = value;
-        }
-    }
-
     private void Start()
     {
         localScaleRight = armSprite.transform.localScale.y;
@@ -27,31 +16,31 @@ public class ArmController : MonoBehaviour
     }
     void Update()
     {
-        if (canMoveArm)
-        {
-            transform.position = armPivot.position;
+        if (GameManager.Instance.IsPaused)
+            return;
 
-            var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
-            var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        transform.position = armPivot.position;
 
-            /*
-            Cuadrantes
-                         90�
-                          | 
-                          |
-                      4   |   1
-              180�/       |
-             -180�  ------|------- 0�
-                          |
-                      3   |   2
-                          |
-                        -90�
+        var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
+        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-            */
-            // Si el brazo est� en el cuadrante 3 o 4 est� mirando a la izquierda
-            var direction = (angle > 90 && angle < 180 || angle > -180 && angle < -90) ? localScaleLeft : localScaleRight;
-            armSprite.transform.localScale = new Vector3(armSprite.transform.localScale.x, direction, armSprite.transform.localScale.z);
-        }
+        /*
+        Cuadrantes
+                        90�
+                        | 
+                        |
+                    4   |   1
+            180�/       |
+            -180�  ------|------- 0�
+                        |
+                    3   |   2
+                        |
+                    -90�
+
+        */
+        // Si el brazo est� en el cuadrante 3 o 4 est� mirando a la izquierda
+        var direction = (angle > 90 && angle < 180 || angle > -180 && angle < -90) ? localScaleLeft : localScaleRight;
+        armSprite.transform.localScale = new Vector3(armSprite.transform.localScale.x, direction, armSprite.transform.localScale.z);
     }
 }

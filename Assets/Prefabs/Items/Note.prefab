@@ -93,7 +93,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3905362369517650817}
-  - component: {fileID: 3905362369517650819}
   - component: {fileID: 3905362369517650818}
   - component: {fileID: 229486233118146359}
   m_Layer: 8
@@ -122,20 +121,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3905362369517650819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3905362369517650877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c420305edc00ce4ebe5ebc83d8a9d32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  realNote: {fileID: 0}
-  audioGetNote: {fileID: 8300000, guid: 048cb41a483d44940aee1aa83c057e04, type: 3}
 --- !u!61 &3905362369517650818
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -187,6 +172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6312363338106662855}
   - component: {fileID: 491573160740061215}
+  - component: {fileID: 8505996470143623605}
   m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
@@ -262,6 +248,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8505996470143623605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3920868844601936809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b03ee1d7facc7cf48acada6a4f73b4d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitude: 0.3
+  frequency: 5
 --- !u!1 &4389322348593536964
 GameObject:
   m_ObjectHideFlags: 0

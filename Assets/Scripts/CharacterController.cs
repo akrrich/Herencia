@@ -42,6 +42,8 @@ public abstract class CharacterController : MonoBehaviour
     [SerializeField] protected AudioClip meleeSound;
     [SerializeField] protected AudioClip shootSound;
 
+    protected AudioSource movingSoundAudioSource;
+
     // State
     private float attackCooldown;
     private bool canAttack;
@@ -68,14 +70,6 @@ public abstract class CharacterController : MonoBehaviour
         attackSpeed
     }
 
-    public bool CanMove
-    {
-        set
-        {
-            canMove = value;
-        }
-    }
-
     void UpdateStates()
     {
         anim.SetBool("moving", IsAlive && IsMoving);
@@ -90,6 +84,17 @@ public abstract class CharacterController : MonoBehaviour
 
         float direccion = rb.velocity.x > 0 ? rightDir : leftDir;
         anim.transform.localScale = new Vector3(direccion, anim.transform.localScale.y, anim.transform.localScale.z);
+
+        if (rb.velocity.magnitude > 0.1)
+        {
+            movingSoundAudioSource.mute = false;
+            movingSoundAudioSource.pitch = 1f + 2 * (movementSpeed / maxMovementSpeed);
+        }
+        else
+        {
+            movingSoundAudioSource.mute = true;
+            movingSoundAudioSource.pitch = 1f;
+        }
     }
     protected virtual void Die()
     {
@@ -98,6 +103,8 @@ public abstract class CharacterController : MonoBehaviour
         this.boxCollider.enabled = false;
 
         spriteMiniMap.SetActive(false);
+
+        movingSoundAudioSource.Stop();
     }
     protected abstract bool IsAttacking();
     protected abstract void ExecuteAttack();
@@ -180,6 +187,9 @@ public abstract class CharacterController : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        movingSoundAudioSource = GetComponent<AudioSource>();
+        movingSoundAudioSource.clip = movingSound;
+        movingSoundAudioSource.Play();
 
         spriteMiniMap = transform.Find("MiniMap Objetive").gameObject;
 
@@ -208,7 +218,7 @@ public abstract class CharacterController : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        if (!IsAlive || !canMove)
+        if (!IsAlive || !canMove || GameManager.Instance.IsPaused)
             return;
         
         UpdateStates();

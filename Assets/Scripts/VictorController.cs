@@ -6,16 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class VictorController : CharacterController
-{
-    private DestroyGameObjects destroyGameObjects;
-
-    [Header("GUI")]
-    [SerializeField] private SliderController sliderLife;
-    [SerializeField] private SliderController sliderShield;
-    [SerializeField] private SliderController sliderMovementSpeed;
-    [SerializeField] private SliderController sliderAttackSpeed;
-
-    public struct VictorStats
+{    public struct VictorStats
     {
         public float maxLife;
         public float life;
@@ -68,34 +59,29 @@ public class VictorController : CharacterController
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
-        
     }
-    
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
     protected override void Start()
     {
         base.Start();
-
-        destroyGameObjects = FindObjectOfType<DestroyGameObjects>();
-
         OnStatsChanged?.Invoke(GetStats());
     }
     private void CheckVictory()
     {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            destroyGameObjects.DestroyObjects();
-            SceneManager.LoadScene("Victoria");
-        }
     }
     private void GoToLoose()
     {
-        destroyGameObjects.DestroyObjects();
         SceneManager.LoadScene("Derrota");
     }
     override protected void Die()
     {
         base.Die();
-        Invoke("GoToLoose", 2f);
+        Invoke(nameof(GoToLoose), 2f);
 
     }
     override public void ApplyDamage(float damage)
