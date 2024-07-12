@@ -10,12 +10,15 @@ public class MainMenuButtons : MonoBehaviour
     [SerializeField] private AudioSource optionSound;
     [SerializeField] private Button buttonPlay;
 
+    [SerializeField] private GameObject allButtons;
+    [SerializeField] private GameObject panelSettings;
+
     private float counterForPlay = 0;
-    private float counterForExit = 0;
 
     private bool timeForSoundPlay = false;
-    private bool timeForSoundExit = false;
     private bool isSoundPlaying = false;
+
+    private bool inOptionsMode = false;
 
 
     private void Update()
@@ -31,7 +34,7 @@ public class MainMenuButtons : MonoBehaviour
             }
         }
 
-        ExitMenuWithKey();
+        PanelAndButtonsStatus();
     }
 
 
@@ -58,19 +61,30 @@ public class MainMenuButtons : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
-    private void ExitMenuWithKey()
+    public void SettingsButton()
     {
-        if (Input.GetKeyUp(KeyCode.Escape))
+        inOptionsMode = true;
+        optionSound.Play();
+    }
+
+    public void BackButton()
+    {
+        inOptionsMode = false;
+        optionSound.Play();
+    }
+
+    private void PanelAndButtonsStatus()
+    {
+        if (inOptionsMode == true)
         {
-            if (isSoundPlaying == false)
-            {
-                optionSound.Play();
-                isSoundPlaying = true;
+            allButtons.SetActive(!inOptionsMode);
+            panelSettings.SetActive(inOptionsMode);
+        }
 
-                buttonPlay.transition = Selectable.Transition.None;
-            }
-
-            timeForSoundExit = true;
+        else
+        {
+            allButtons.SetActive(!inOptionsMode);
+            panelSettings.SetActive(inOptionsMode);
         }
     }
 }
