@@ -1807,7 +1807,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6454110466645247735, guid: 18cc5724b6d66734ca6421d374dd13e9, type: 3}
       propertyPath: nextScene
-      value: BosqueMuerto2
+      value: BosqueMuerto
       objectReference: {fileID: 0}
     - target: {fileID: 6454110466645247737, guid: 18cc5724b6d66734ca6421d374dd13e9, type: 3}
       propertyPath: m_Name
