@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     [Header("UI Controllers")]
     [SerializeField] PauseController pauseController;
+    [SerializeField] SettingsController settingsController;
     [SerializeField] FadeController fadeController;
     [SerializeField] JournalController journalController;
     [SerializeField] FullMapController fullMapController;
@@ -43,12 +44,28 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void PauseGame()
+    public void PauseGame()
     {
         isPaused = !isPaused;
         Time.timeScale = isPaused ? 0.0f : 1.0f;
 
         pauseController.SetActive(isPaused);
+    }
+
+    public void ShowSettings()
+    {
+        if (!isPaused)
+            return;
+
+        pauseController.ShowSettings();
+    }
+
+    public void HideSettings()
+    {
+        if (!isPaused)
+            return;
+
+        pauseController.HideSettings();
     }
 
     private void ToggleUIMenu(UIMenu menu)
