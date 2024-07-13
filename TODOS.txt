@@ -47,7 +47,7 @@ PENDIENTE:
 	al terminar el juego
 
 
-16. Subir a Itch.io
+6. Subir a Itch.io
 
 
 PROCESO:
