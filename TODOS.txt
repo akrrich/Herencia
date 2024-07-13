@@ -13,20 +13,37 @@
 2. Balanceo
 	Vida, ataque y velocidad de todos los enemigos.
 
-3. Sonidos
-	Agregar sonidos a las distintas acciones de los enemigos.
-	Musica.
+3. Sonidos (Ataque, muerte, caminata, ataque melee)
+	Laboratorio:
+		Deforme
+		Fallido
+		Abominación
+	
+	Bosque:
+		Mancillado
+		Renacido
+		Guardian
+	
+	Palacio:
+		Aberración
+		Adefecio
+		Franco
+	
+4. Musica:
+	1. General
+	2. Boss
+	3. Booster
+	4. Journal
+	
+	- Laboratorio.
+	- Bosque.
+	- Palacio.
 
-4. Escenarios:
+5. Escenarios:
 	Revelar mapa de a 1 por vez.
 	Hoja del diario en el cuartro del diario revela todo el mapa (en grisado).
 	Revisar Balanceo.
 	(Opcional) agregar más templates
-
-5. Puntero del mouse
-	Hacer que se oculte el mouse por defecto.
-	Mostrar un puntero personalizado.
-	Revisar el project settings.
 
 6. Pantalla de créditos
 	Agregar al menú principal
@@ -42,10 +59,8 @@
 	Agregar dialogos al principio del juego.
 	Antes de cada boss.
 	Al principio y al final de Franco.
-
-9. Manualsito con las teclas del juego
 	
-10. Arte y animaciones
+9. Arte y animaciones
 	- Revisar animaciones de los enemigos del juego.
 		- Deforme
 		- Fallido
@@ -64,8 +79,8 @@
 			Props de laboratorio abandonado.
 
 	
-11. Agregar fade out
+10. Agregar fade out
 	https://www.youtube.com/watch?v=Ox0JCbVIMCQ&t=2s
 
 
-12. Subir a Itch.io
+11. Subir a Itch.io
