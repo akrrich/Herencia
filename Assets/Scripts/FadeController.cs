@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,11 @@ public class FadeController : MonoBehaviour
 
     private float startTime;
     private Color panelColor;
+
+    public void SetActive(bool v)
+    {
+
+    }
 
     void Start()
     {
@@ -26,7 +32,7 @@ public class FadeController : MonoBehaviour
         // Si el fade ha terminado, desactivar el script para optimización
         if (t >= 1)
         {
-            enabled = false;
+            gameObject.SetActive(false);
         }
     }
 }

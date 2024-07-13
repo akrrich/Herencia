@@ -7,84 +7,97 @@ using UnityEngine.UI;
 
 public class MainMenuButtons : MonoBehaviour
 {
-    [SerializeField] private AudioSource optionSound;
-    [SerializeField] private Button buttonPlay;
-
+    
+    [Header("UI Elements")]
     [SerializeField] private GameObject allButtons;
     [SerializeField] private GameObject panelSettings;
 
-    private float counterForPlay = 0;
-
-    private bool timeForSoundPlay = false;
-    private bool isSoundPlaying = false;
+    private AudioSource actionSound;
 
     private bool inOptionsMode = false;
-
-
-    private void Update()
+    private IEnumerator PlayClickSoundAndChangeScene(string sceneToLoad)
     {
-        if (timeForSoundPlay == true)
-        {
-            counterForPlay += Time.deltaTime;
+        actionSound.Play();
 
-            if (counterForPlay > 0.35)
-            {
-                NotesController.CreateNewList();
-                SceneManager.LoadScene("Laboratorio2");
-            }
+        // Espera hasta que el sonido termine de reproducirse
+        yield return new WaitForSeconds(actionSound.clip.length);
+
+        ChangeScene(sceneToLoad);
+    }
+
+    private IEnumerator PlayClickSoundAndQuit()
+    {
+        actionSound.Play();
+
+        // Espera hasta que el sonido termine de reproducirse
+        yield return new WaitForSeconds(actionSound.clip.length);
+
+        Application.Quit();
+    }
+
+    private void ChangeScene(string sceneToLoad)
+    {
+        if (!string.IsNullOrEmpty(sceneToLoad))
+        {
+            SceneManager.LoadScene(sceneToLoad);
         }
+    }
+
+    public void PlayButton()
+    {
+        StartCoroutine(PlayClickSoundAndChangeScene("Laboratorio"));
+    }
+    public void SettingsButton()
+    {
+        inOptionsMode = true;
+        actionSound.Play();
+
+        PanelAndButtonsStatus();
+    }
+    public void BackButton()
+    {
+        inOptionsMode = false;
+        actionSound.Play();
 
         PanelAndButtonsStatus();
     }
 
-
-    public void PlayButton()
+    public void CreditsButton()
     {
-        if (isSoundPlaying == false)
-        {
-            optionSound.Play();
-            isSoundPlaying = true;
-
-            buttonPlay.transition = Selectable.Transition.None;
-        }
-
-        timeForSoundPlay = true;
-    }
-
-    public void ExitButton()
-    {
-        Application.Quit();
+        StartCoroutine(PlayClickSoundAndChangeScene("Creditos"));
     }
 
     public void MainMenuButton()
     {
-        SceneManager.LoadScene("Menu");
+        if(GameManager.Instance.IsPaused)
+            GameManager.Instance.PauseGame();
+        StartCoroutine(PlayClickSoundAndChangeScene("Menu"));
     }
 
-    public void SettingsButton()
+    public void ExitButton()
     {
-        inOptionsMode = true;
-        optionSound.Play();
+        StartCoroutine(PlayClickSoundAndQuit());
     }
 
-    public void BackButton()
+    private void Start()
     {
+        actionSound = GetComponent<AudioSource>();
         inOptionsMode = false;
-        optionSound.Play();
+        PanelAndButtonsStatus();
     }
 
     private void PanelAndButtonsStatus()
     {
-        if (inOptionsMode == true)
+        if (inOptionsMode)
         {
-            allButtons.SetActive(!inOptionsMode);
-            panelSettings.SetActive(inOptionsMode);
+            if(panelSettings)
+                panelSettings.SetActive(true);
         }
-
         else
         {
-            allButtons.SetActive(!inOptionsMode);
-            panelSettings.SetActive(inOptionsMode);
+            if (panelSettings)
+                panelSettings.SetActive(false);
         }
+        allButtons.SetActive(!inOptionsMode);
     }
 }

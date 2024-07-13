@@ -9,29 +9,19 @@ public class Dialogues : MonoBehaviour
     [SerializeField] private NotesController notesController;
 
     private VictorMapRotation victorMapRotation;
-    private ArmController armController;
-
 
     [SerializeField] private List<GameObject> bosImages;
-
     [SerializeField] private List<string> conversationList;
 
-
     private TMP_Text conversationText;
-
     private GameObject panel;
 
-
     private int indexBosImage = 0;
-
     private int indexConversationList = 0;
-
     private bool dialogueMode = false;
-
 
     private void Start()
     {
-        armController = victor.GetComponentInChildren<ArmController>();
         victorMapRotation = victor.GetComponentInChildren<VictorMapRotation>();
 
         panel = transform.Find("Panel").gameObject;
@@ -69,10 +59,8 @@ public class Dialogues : MonoBehaviour
 
     private void CharacterConditions(bool victorMove, bool notesOpen, bool vicotorMapRotate, bool armMove)
     {
-        victor.CanMove = victorMove;
         notesController.CanOpenNoteMode = notesOpen;
         victorMapRotation.CanRotate = vicotorMapRotate;
-        armController.CanMoveArm = armMove;
     }
 
     private void ChangeTextsWithClick()

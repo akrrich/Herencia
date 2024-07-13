@@ -9,11 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 9fe8084a8244618448a3142cf56a4ab4
   - enabled: 1
-    path: Assets/Scenes/LaboratorioAbandonadoViejo.unity
-    guid: 04ddf4d52cdf922458e4bf37a2b987ba
+    path: Assets/Scenes/Laboratorio.unity
+    guid: fac829d996cbb314fa2c638e257e8096
   - enabled: 1
     path: Assets/Scenes/BosqueMuerto.unity
-    guid: f86efbb853e03184e90413f45f672c0d
+    guid: 9460d98b3770af944ae712e5407256cc
+  - enabled: 1
+    path: Assets/Scenes/ElPalacio.unity
+    guid: 145c58a8882608d4eb231c6440e961b8
   - enabled: 1
     path: Assets/Scenes/Victoria.unity
     guid: 6dc8afd9b354eab449b6a216eee5ec69
@@ -21,12 +24,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Derrota.unity
     guid: 24bddee55b5a08648b5d80590b462e90
   - enabled: 1
-    path: Assets/Scenes/BosqueMuerto2.unity
-    guid: 9460d98b3770af944ae712e5407256cc
-  - enabled: 1
-    path: Assets/Scenes/Laboratorio2.unity
-    guid: fac829d996cbb314fa2c638e257e8096
-  - enabled: 1
-    path: Assets/Scenes/ElPalacio2.unity
-    guid: 145c58a8882608d4eb231c6440e961b8
+    path: Assets/Scenes/Creditos.unity
+    guid: c28e699451b47dd40841c7a11d3447f6
   m_configObjects: {}

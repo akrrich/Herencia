@@ -4,14 +4,18 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.TextCore.Text;
+using System;
+using System.Linq;
 
 public class JournalController : MonoBehaviour
 {
     [Header("UI")]
+    [SerializeField] GameObject journalNotesCounterUI;
     [SerializeField] GameObject panel;
     [SerializeField] TMP_Text title;
     [SerializeField] TMP_Text text;
     [SerializeField] Image cover;
+    [SerializeField] TMP_Text notesCounter;
 
     [Header("Notas")]
     [SerializeField] List<NoteData> notesList;
@@ -48,12 +52,17 @@ public class JournalController : MonoBehaviour
         if(isJournal)
         {
             hasJournal = true;
+            journalNotesCounterUI.SetActive(true);
         }
         else
         {
             notesList[noteId].discovered = true;
             currentNote = noteId;
-            SetPage(notesList[noteId].title, notesList[noteId].text, notesList[noteId].cover);
+
+            TMP_Text noteCountUIText = journalNotesCounterUI.GetComponentInChildren<TMP_Text>();
+            noteCountUIText.text = $"{notesList.Count(note => note.discovered)} / {notesList.Count}";
+            
+            SetPage();
         }
     }
     void Start()
@@ -65,7 +74,9 @@ public class JournalController : MonoBehaviour
         hasJournal = false;
         IsJournalOpened = false;
 
-        SetPage("", "", null);
+        journalNotesCounterUI.SetActive(false);
+
+        SetPage();
     }
 
     private void NextNote()
@@ -81,7 +92,7 @@ public class JournalController : MonoBehaviour
 
         if(currentNote != -1)
         {
-            SetPage(notesList[currentNote].title, notesList[currentNote].text, notesList[currentNote].cover);
+            SetPage();
             audioSource.clip = nextPageAudio;
             audioSource.Play();
         }
@@ -100,9 +111,31 @@ public class JournalController : MonoBehaviour
 
         if (currentNote != -1)
         {
-            SetPage(notesList[currentNote].title, notesList[currentNote].text, notesList[currentNote].cover);
+            SetPage();
             audioSource.clip = nextPageAudio;
             audioSource.Play();
+        }
+    }
+    private void Update()
+    {
+        if (GameManager.Instance.IsPaused)
+            return;
+
+        if (IsJournalOpened && Input.GetKeyDown(KeyCode.RightArrow))
+            NextNote();
+
+        if (IsJournalOpened && Input.GetKeyDown(KeyCode.LeftArrow))
+            PreviousNote();
+    }
+
+    public void SetJournal(bool v)
+    {
+        if (hasJournal)
+        {
+            if (v)
+                OpenJournal();
+            else
+                CloseJournal();
         }
     }
 
@@ -112,7 +145,6 @@ public class JournalController : MonoBehaviour
         IsJournalOpened=true;
         audioSource.clip = openJournalAudio;
         audioSource.Play();
-        Time.timeScale = 0;
     }
 
     private void CloseJournal()
@@ -121,32 +153,32 @@ public class JournalController : MonoBehaviour
         IsJournalOpened = false;
         audioSource.clip = openJournalAudio;
         audioSource.Play();
-        Time.timeScale = 1;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetPage()
     {
-       if(hasJournal) 
-       {
-        if (Input.GetKeyDown(KeyCode.J))
-            if(IsJournalOpened)
-                CloseJournal();
-            else
-                OpenJournal();
-
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-                NextNote();
-
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-                PreviousNote();
+        if(currentNote == -1)
+        {
+            this.title.text = "";
+            this.text.text = "";
+            this.cover.sprite = null;
+            notesCounter.text = "";
+            return;
         }
+        
+        this.title.text = notesList[currentNote].title;
+        this.text.text = notesList[currentNote].text;
+        this.cover.sprite = notesList[currentNote].cover;
+        notesCounter.text = $"{notesList[currentNote].id + 1} / {notesList.Count}";
     }
 
-    public void SetPage(string title, string text, Sprite cover)
+    public void ToggleActive() {
+        SetActive(!IsJournalOpened);
+    }
+
+    public void SetActive(bool v)
     {
-        this.title.text = title;
-        this.text.text = text;
-        this.cover.sprite = cover;
+        SetJournal(v);
+        panel.SetActive(v);
     }
 }

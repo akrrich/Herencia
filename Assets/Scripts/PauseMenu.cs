@@ -8,7 +8,6 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private NotesController notesController;
 
     private VictorMapRotation victorMapRotation;
-    private ArmController armController;
 
     private GameObject panel;
 
@@ -22,8 +21,6 @@ public class PauseMenu : MonoBehaviour
     private void HandlePersonajeInstanciado(VictorController vc)
     {
         victorController = vc;
-        
-        armController = victorController.GetComponentInChildren<ArmController>();
         victorMapRotation = victorController.GetComponentInChildren<VictorMapRotation>();
     }
 
@@ -85,13 +82,9 @@ public class PauseMenu : MonoBehaviour
     {
         panel.SetActive(gameInPause);
 
-        victorController.CanMove = false;
-
         notesController.CanOpenNoteMode = false;
 
         victorMapRotation.CanRotate = false;
-
-        armController.CanMoveArm = false;
 
         Time.timeScale = 0f;
 
@@ -108,9 +101,6 @@ public class PauseMenu : MonoBehaviour
 
         if (notesController.OpenNoteMode == false)
         {
-            armController.CanMoveArm = true;
-
-            victorController.CanMove = true;
         }
 
         Time.timeScale = 1f;
