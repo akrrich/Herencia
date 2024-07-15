@@ -24,23 +24,6 @@ PENDIENTE:
 	(Opcional) agregar más templates
 
 
-4. Musica:
-
-        A- Menu de inicio
-        B- Pantalla Derrota
-        C- Pantalla victoria
-        D- Creditos
-
-	1. General
-	2. Boss
-	3. Booster
-	4. Journal
-	
-	- Laboratorio.
-	- Bosque.
-	- Palacio.
-
-
 5. Cinemáticas
 	Agregar cinématicas al principio de cada nivel
 	al enfrentar un boss
@@ -109,3 +92,20 @@ FINALIZDOS:
 2- Menu de opciones
 	Implementarlo en mnenu de inicio.
 	Implementarlo en el juego.
+
+
+3. Musica:
+
+        A- Menu de inicio
+        B- Pantalla Derrota
+        C- Pantalla victoria
+        D- Creditos
+
+	1. General
+	2. Boss
+	3. Booster
+	4. Journal
+	
+	- Laboratorio.
+	- Bosque.
+	- Palacio.
