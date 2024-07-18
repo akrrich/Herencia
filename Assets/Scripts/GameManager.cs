@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,7 +17,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] DialogController dialogController;
 
     private bool isPaused;
-
+    private bool isShowingDialogUI;
+    private bool shouldShowDialog;
+    private int currentDialogID;
     public enum UIMenu
     {
         None,
@@ -42,11 +45,19 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
     }
-
-    public void PauseGame()
+    public void PauseGame(bool showPauseMenu=true)
     {
-        isPaused = !isPaused;
-        Time.timeScale = isPaused ? 0.0f : 1.0f;
+        isPaused = true;
+        Time.timeScale = 0;
+
+        if(showPauseMenu)
+            pauseController.SetActive(isPaused);
+    }
+
+    public void PlayGame()
+    {
+        isPaused = false;
+        Time.timeScale = 1f;
 
         pauseController.SetActive(isPaused);
     }
@@ -67,6 +78,19 @@ public class GameManager : MonoBehaviour
         pauseController.HideSettings();
     }
 
+    public void HideDialog()
+    {
+        PlayGame();
+        dialogController.SetActive(false);
+        isShowingDialogUI = false;
+    }
+
+    public void ShowDialog(int dialogID)
+    {;
+        shouldShowDialog = true;
+        currentDialogID = dialogID;
+    }
+
     private void ToggleUIMenu(UIMenu menu)
     {
         switch (menu)
@@ -83,12 +107,23 @@ public class GameManager : MonoBehaviour
                 fullMapController.ToggleActive();
                 journalController.SetActive(false);
                 break;
+
+            case UIMenu.Dialog:
+                dialogController.SetActive(true);
+                dialogController.SetDialog(currentDialogID);
+                journalController.SetActive(false);
+                fullMapController.SetActive(false);
+                isShowingDialogUI = true;
+                PauseGame(showPauseMenu: false);
+                break;
         }
     }
 
     private void Start()
     {
         isPaused = false;
+        isShowingDialogUI = false;
+        currentDialogID = -1;
 
         pauseController.SetActive(false);
         fadeController.SetActive(true);
@@ -101,10 +136,27 @@ public class GameManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            PauseGame();
+            if (isPaused)
+                PlayGame();
+            else
+                PauseGame();
+        }
+
+        // TEST
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            ShowDialog(0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            ShowDialog(1);
         }
 
         if (isPaused)
+            return;
+
+        if (isShowingDialogUI)
             return;
 
         if(Input.GetKeyDown(KeyCode.Tab))
@@ -115,6 +167,12 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.J))
         {
             ToggleUIMenu(UIMenu.Journal);
+        }
+
+        if (shouldShowDialog)
+        {
+            ToggleUIMenu(UIMenu.Dialog);
+            shouldShowDialog = false;
         }
 
         if (startingMap is null) 

@@ -30,11 +30,6 @@ public class JournalController : MonoBehaviour
     private int currentNote;
 
     private VictorController victorController;
-    private void HandlePersonajeInstanciado(VictorController vc)
-    {
-        victorController = vc;
-        victorController.OnJournalNotePicked += HandeJournalNotePicked;
-    }
     private void OnEnable()
     {
         VictorController.OnPersonajeInstanciado += HandlePersonajeInstanciado;
@@ -44,10 +39,15 @@ public class JournalController : MonoBehaviour
         if (victorController != null)
         {
             VictorController.OnPersonajeInstanciado -= HandlePersonajeInstanciado;
-            victorController.OnJournalNotePicked -= HandeJournalNotePicked;
+            victorController.OnJournalNotePicked -= HandleJournalNotePicked;
         }
     }
-    private void HandeJournalNotePicked(int noteId, bool isJournal)
+    private void HandlePersonajeInstanciado(VictorController vc)
+    {
+        victorController = vc;
+        victorController.OnJournalNotePicked += HandleJournalNotePicked;
+    }
+    private void HandleJournalNotePicked(int noteId, bool isJournal)
     {
         if(isJournal)
         {

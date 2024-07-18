@@ -69,7 +69,7 @@ public class MainMenuButtons : MonoBehaviour
     public void MainMenuButton()
     {
         if(GameManager.Instance.IsPaused)
-            GameManager.Instance.PauseGame();
+            GameManager.Instance.PlayGame();
         StartCoroutine(PlayClickSoundAndChangeScene("Menu"));
     }
 
