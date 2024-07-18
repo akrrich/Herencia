@@ -3,7 +3,6 @@ using UnityEngine;
 
 public abstract class CharacterController : MonoBehaviour
 {
-
     protected Rigidbody2D rb;
     private Animator anim;
     private BoxCollider2D boxCollider;
@@ -140,7 +139,7 @@ public abstract class CharacterController : MonoBehaviour
         Color effectColor = Color.red;
 
         if (shield)
-            effectColor = Color.cyan;
+            effectColor = Color.green;
 
         // Duración del efecto
         float duration = 0.25f;

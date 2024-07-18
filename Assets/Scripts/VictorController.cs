@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class VictorController : CharacterController
-{    public struct VictorStats
+{    
+    public struct VictorStats
     {
         public float maxLife;
         public float life;
@@ -44,6 +45,10 @@ public class VictorController : CharacterController
 
     public static System.Action<VictorController> OnPersonajeInstanciado;
 
+
+    private MusicController musicController;
+
+
     private void Awake()
     {
         // DontDestroyOnLoad(gameObject);
@@ -70,7 +75,10 @@ public class VictorController : CharacterController
     {
         base.Start();
         OnStatsChanged?.Invoke(GetStats());
+
+        musicController = FindObjectOfType<MusicController>();
     }
+
     private void CheckVictory()
     {
     }
@@ -82,7 +90,6 @@ public class VictorController : CharacterController
     {
         base.Die();
         Invoke(nameof(GoToLoose), 2f);
-
     }
     override public void ApplyDamage(float damage)
     {
@@ -96,11 +103,11 @@ public class VictorController : CharacterController
         switch (type)
         {
             case Stats.LifePoints:
-                effectColor = Color.green;
+                effectColor = Color.red;
                 break;
 
             case Stats.Shield:
-                effectColor = Color.blue;
+                effectColor = Color.green;
                 break;
 
             case Stats.characterSpeed:
@@ -190,5 +197,16 @@ public class VictorController : CharacterController
     override protected void ExecuteUpdate()
     {
         CheckVictory();
+    }
+
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        musicController.Stay(collision);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        musicController.Exit(collision);
     }
 }
