@@ -12,12 +12,13 @@ PENDIENTE:
 		2. Triple dispado (Cabeza)
 		3. Franco: Atacar como Victor + todos los demás
 
+2. DontDestroyOnLoad
+	Hacer que se guarden los settings de capitulo a capitulo
 
-2. Balanceo
+3. Balanceo
 	Vida, ataque y velocidad de todos los enemigos.
 
-
-3. Escenarios:
+4. Escenarios
 	Revelar mapa de a 1 por vez.
 	Hoja del diario en el cuartro del diario revela todo el mapa (en grisado).
 	Revisar Balanceo.
