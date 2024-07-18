@@ -5,11 +5,6 @@ using TMPro;
 
 public class Dialogues : MonoBehaviour
 {
-    [SerializeField] private VictorController victor;
-    [SerializeField] private NotesController notesController;
-
-    private VictorMapRotation victorMapRotation;
-
     [SerializeField] private List<GameObject> bosImages;
     [SerializeField] private List<string> conversationList;
 
@@ -22,8 +17,6 @@ public class Dialogues : MonoBehaviour
 
     private void Start()
     {
-        victorMapRotation = victor.GetComponentInChildren<VictorMapRotation>();
-
         panel = transform.Find("Panel").gameObject;
 
         conversationText = panel.transform.Find("Text Dialogue").GetComponent<TMP_Text>();
@@ -52,16 +45,9 @@ public class Dialogues : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.H))
         {
             dialogueMode = true;
-
-            CharacterConditions(false, false, false, false);
         }
     }
 
-    private void CharacterConditions(bool victorMove, bool notesOpen, bool vicotorMapRotate, bool armMove)
-    {
-        notesController.CanOpenNoteMode = notesOpen;
-        victorMapRotation.CanRotate = vicotorMapRotate;
-    }
 
     private void ChangeTextsWithClick()
     {
@@ -94,12 +80,6 @@ public class Dialogues : MonoBehaviour
 
             indexBosImage++;
 
-            Invoke("InvokeCharacterCondition", 0.25f);
         }
-    }
-
-    private void InvokeCharacterCondition()
-    {
-        CharacterConditions(true, true, true, true);
     }
 }

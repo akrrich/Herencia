@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DestroyGameObjects : MonoBehaviour
 {
-    public UiController UiController;
     public GameManager gameManager;
     private VictorController victorController;
 
@@ -27,7 +26,6 @@ public class DestroyGameObjects : MonoBehaviour
     }
     public void DestroyObjects()
     {
-        Destroy(UiController.gameObject);
         Destroy(victorController.gameObject, 1f);
         Destroy(gameManager.gameObject);
     }

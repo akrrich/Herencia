@@ -12,6 +12,9 @@ TagManager:
   - SpawnPoint
   - Door
   - Prop
+  - JournalMap
+  - BossMap
+  - BoosterMap
   layers:
   - Default
   - TransparentFX
