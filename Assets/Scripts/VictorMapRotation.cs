@@ -9,15 +9,6 @@ public class VictorMapRotation : MonoBehaviour
 
     private Transform victor;
 
-    private bool canRotate = true;
-
-
-    public bool CanRotate
-    {
-        set { canRotate = value; }
-    }
-
-
     private void Awake()
     {
         victorController = GetComponentInParent<VictorController>();
@@ -27,7 +18,7 @@ public class VictorMapRotation : MonoBehaviour
 
     private void Update()
     {
-        if (canRotate)
+        if (!GameManager.Instance.IsPaused)
         {
             Vector3 mousePosition = Input.mousePosition;
 

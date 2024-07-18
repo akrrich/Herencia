@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
 
     [Header("UI Controllers")]
     [SerializeField] PauseController pauseController;
-    [SerializeField] SettingsController settingsController;
     [SerializeField] FadeController fadeController;
     [SerializeField] JournalController journalController;
     [SerializeField] FullMapController fullMapController;

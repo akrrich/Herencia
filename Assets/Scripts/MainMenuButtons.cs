@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class MainMenuButtons : MonoBehaviour
 {
-    
     [Header("UI Elements")]
     [SerializeField] private GameObject allButtons;
     [SerializeField] private GameObject panelSettings;
