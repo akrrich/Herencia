@@ -326,9 +326,9 @@ MonoBehaviour:
   maxLife: 40
   maxShield: 0
   maxMovementSpeed: 10
-  movementSpeed: 8
+  movementSpeed: 7
   maxAttackSpeed: 1
-  attackSpeed: 7
+  attackSpeed: 6
   bullet: {fileID: 4756643611347867595, guid: e3582f0ae99b4894e8eab4b20a2045fd, type: 3}
   bulletSpawner: {fileID: 3486339299572027958}
   movingSound: {fileID: 8300000, guid: ad4ee2dfc950dee4288ee9869e926d7e, type: 3}

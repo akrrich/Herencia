@@ -2876,9 +2876,7 @@ MonoBehaviour:
   doorBottom: {fileID: 7662857848535187287}
   doorLeft: {fileID: 6057741579893052185}
   enemigos:
-  - {fileID: 0}
   - {fileID: 578895598273168009}
-  - {fileID: 0}
   - {fileID: 1990384790195399535}
   doorBossController: {fileID: 0}
   doorUpController: {fileID: 0}

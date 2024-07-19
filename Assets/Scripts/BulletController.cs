@@ -2,12 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class BulletController : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] float damage;
     [SerializeField] AudioClip splashSound;
+    [SerializeField] SpriteRenderer bulletImage;
 
     private CharacterController owner;
 

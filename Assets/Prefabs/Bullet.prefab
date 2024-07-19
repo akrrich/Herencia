@@ -367,6 +367,7 @@ MonoBehaviour:
   speed: 30
   damage: 5
   splashSound: {fileID: 8300000, guid: 8da5c08c246287e42958291f68cdc288, type: 3}
+  bulletImage: {fileID: 3154010182193468401}
 --- !u!1 &6977611720722419849
 GameObject:
   m_ObjectHideFlags: 0
