@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,6 +15,12 @@ public class MainMenuButtons : MonoBehaviour
     private AudioSource actionSound;
 
     private bool inOptionsMode = false;
+
+    private Scene currentScene;
+
+    private string[] allScenes = { "Menu", "Laboratorio", "BosqueMuerto", "ElPalacio"};
+
+
     private IEnumerator PlayClickSoundAndChangeScene(string sceneToLoad)
     {
         actionSound.Play();
@@ -46,6 +53,7 @@ public class MainMenuButtons : MonoBehaviour
     {
         StartCoroutine(PlayClickSoundAndChangeScene("Laboratorio"));
     }
+
     public void SettingsButton()
     {
         inOptionsMode = true;
@@ -66,10 +74,15 @@ public class MainMenuButtons : MonoBehaviour
         StartCoroutine(PlayClickSoundAndChangeScene("Creditos"));
     }
 
-    public void MainMenuButton()
+    public void MainMenuButtonInGame()
     {
         if(GameManager.Instance.IsPaused)
             GameManager.Instance.PlayGame();
+        StartCoroutine(PlayClickSoundAndChangeScene("Menu"));
+    }
+
+    public void MainMenuButtonInFinalScreen()
+    {
         StartCoroutine(PlayClickSoundAndChangeScene("Menu"));
     }
 
@@ -85,18 +98,26 @@ public class MainMenuButtons : MonoBehaviour
         PanelAndButtonsStatus();
     }
 
+    private void Update()
+    {
+        currentScene = SceneManager.GetActiveScene();
+    }
+
     private void PanelAndButtonsStatus()
     {
-        if (inOptionsMode)
+        if (allScenes.Contains(currentScene.name))
         {
-            if(panelSettings)
-                panelSettings.SetActive(true);
+            if (inOptionsMode)
+            {
+                if (panelSettings)
+                    panelSettings.SetActive(true);
+            }
+            else
+            {
+                if (panelSettings)
+                    panelSettings.SetActive(false);
+            }
+            allButtons.SetActive(!inOptionsMode);
         }
-        else
-        {
-            if (panelSettings)
-                panelSettings.SetActive(false);
-        }
-        allButtons.SetActive(!inOptionsMode);
     }
 }

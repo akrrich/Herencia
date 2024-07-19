@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 263579046}
   - component: {fileID: 263579045}
   m_Layer: 5
-  m_Name: Text Button Play
+  m_Name: Text Button Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -999,7 +999,7 @@ GameObject:
   - component: {fileID: 1459439982}
   - component: {fileID: 1459439981}
   m_Layer: 5
-  m_Name: Button Play
+  m_Name: Button Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1072,7 +1072,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1468182446}
         m_TargetAssemblyTypeName: MainMenuButtons, Assembly-CSharp
-        m_MethodName: MainMenuButton
+        m_MethodName: MainMenuButtonInFinalScreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1177,7 +1177,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d04fd31828b572141b8d21b914292bff, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 334df0e7929c6074d843abfa7ad33f13, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
