@@ -115,7 +115,7 @@ public class VictorController : CharacterController
                 break;
 
             case Stats.attackSpeed:
-                effectColor = Color.magenta;
+                effectColor = Color.cyan;
                 break;
         }
 

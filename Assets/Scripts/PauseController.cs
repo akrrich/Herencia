@@ -9,7 +9,6 @@ public class PauseController : MonoBehaviour
 
     private AudioSource soundOption;
 
-
     private void Start()
     {
         soundOption = GetComponent<AudioSource>();
