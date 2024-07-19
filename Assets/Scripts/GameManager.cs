@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
     }
+
     public void PauseGame(bool showPauseMenu=true)
     {
         isPaused = true;
@@ -145,12 +146,12 @@ public class GameManager : MonoBehaviour
         // TEST
         if (Input.GetKeyDown(KeyCode.T))
         {
-            ShowDialog(0);
+            VictorInstance.MaxLifeShieldDebug();
         }
 
         if (Input.GetKeyDown(KeyCode.Y))
         {
-            ShowDialog(1);
+            VictorInstance.MaxStatsDebug();
         }
 
         if (isPaused)

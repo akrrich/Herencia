@@ -332,12 +332,12 @@ MonoBehaviour:
   bullet: {fileID: 4756643611347867595, guid: a5d3a4281290ecb46b73a229a01125d8, type: 3}
   bulletSpawner: {fileID: 6654545898235603156}
   movingSound: {fileID: 0}
-  deathSound: {fileID: 0}
-  meleeSound: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: bd238248a421d2e409e0d3e427dd5709, type: 3}
+  meleeSound: {fileID: 8300000, guid: f8f30d0c4b287de41890c23f9077649b, type: 3}
   shootSound: {fileID: 0}
-  seekRadius: 12
+  seekRadius: 20
   meleeAttackRadius: 5
-  bulletAttackRadius: 9
+  bulletAttackRadius: 15
   meleeDamage: 5
   attackType: 2
   target: {fileID: 0}

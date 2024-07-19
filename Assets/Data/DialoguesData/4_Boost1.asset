@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6fbc3dd941b3a4fa0ae3eb11950b58, type: 3}
+  m_Name: 4_Boost1
+  m_EditorClassIdentifier: 
+  id: 4
+  leftCharacter: {fileID: 21300000, guid: 3f4e937721c59774ba39e5c0d7d74f88, type: 3}
+  rightCharacter: {fileID: 0}
+  centerObjectImage: {fileID: 21300000, guid: 5223deb622132fb44972b118a388b0db, type: 3}
+  dialogList:
+  - "Aj\xE1! este lugar est\xE1 lleno de equipamiento avanzado, es como si conociera
+    estas piezas con gran detalle, aunque no recuerdo porque."
+  - "... por el momento voy a mejorar este dispositivo para que sea m\xE1s letal.
+    Espero encontrar mas habitaciones como est\xE1s mas adelante."

@@ -282,7 +282,7 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: 3cc10a23adb747b43a6e80e2a7494692, type: 3}
   meleeSound: {fileID: 8300000, guid: f8f30d0c4b287de41890c23f9077649b, type: 3}
   shootSound: {fileID: 0}
-  seekRadius: 10
+  seekRadius: 20
   meleeAttackRadius: 4
   bulletAttackRadius: 7
   meleeDamage: 5

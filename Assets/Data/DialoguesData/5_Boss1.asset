@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6fbc3dd941b3a4fa0ae3eb11950b58, type: 3}
+  m_Name: 5_Boss1
+  m_EditorClassIdentifier: 
+  id: 5
+  leftCharacter: {fileID: 21300000, guid: 3f4e937721c59774ba39e5c0d7d74f88, type: 3}
+  rightCharacter: {fileID: 21300000, guid: b0261ca3a35e64741ac40803edfaa682, type: 3}
+  centerObjectImage: {fileID: 0}
+  dialogList:
+  - "Este monstruo rea mucho mas fuerte que los dem\xE1s ..."
+  - "Y por alg\xFAn motivo estaba particularmente enfocado en destruirme ..."
+  - Como si tuviera un profundo odio hacia mi ...
+  - Esta puerta parece dirigir a la salida, no puedo detenerme ahora.

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a6fbc3dd941b3a4fa0ae3eb11950b58, type: 3}
-  m_Name: Ejemplo 1
+  m_Name: 3_DiarioSala1
   m_EditorClassIdentifier: 
-  id: 2
+  id: 3
   leftCharacter: {fileID: 21300000, guid: 3f4e937721c59774ba39e5c0d7d74f88, type: 3}
   rightCharacter: {fileID: 0}
-  centerObjectImage: {fileID: 0}
+  centerObjectImage: {fileID: 21300000, guid: 69789812070240b41b515456d0d8c0da, type: 3}
   dialogList:
-  - Ejemplo 1 Step 1
-  - Ejemplo 1 Step 2
-  - Ejemplo 1 Step 3
+  - Este lugar parece mucho mas acojedor que el resto ...
+  - "Seguramente es en esta habitaci\xF3n donde el cientifico escribi\xF3 sus memorias,
+    debo encontrar mas habitaciones como esta."

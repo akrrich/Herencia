@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a6fbc3dd941b3a4fa0ae3eb11950b58, type: 3}
-  m_Name: Ejemplo
+  m_Name: 12_Boost3
   m_EditorClassIdentifier: 
-  id: 1
+  id: 12
   leftCharacter: {fileID: 21300000, guid: 3f4e937721c59774ba39e5c0d7d74f88, type: 3}
-  rightCharacter: {fileID: 21300000, guid: 70e96cbe342bade42b11d4919480e2ee, type: 3}
+  rightCharacter: {fileID: 0}
+  centerObjectImage: {fileID: 21300000, guid: d9da3d939b0d82e4e898ccba40e504fc, type: 3}
   dialogList:
-  - Franco era franco y francamente vehemente. Le gustaba la chata clavaba y trababa
-    la caja cambiada. Le pedia legia a la pandilla bandida.
-  - Luego de venir y luego de volver lo que queda es lo que sobra y lo que falta
-    es lo que vuelve.
-  centerObjectImage: {fileID: 21300000, guid: f5fe13b408df6044aba0186586626e91, type: 3}
+  - "No tengo palabras para describir la sensaci\xF3n que recorre mi cuerpo."
+  - "Mi mente fantasea con las cosas que se podr\xEDan hacer con todos estos equipos
+    y aparatos."
+  - "Creo entender porqu\xE9 el cientifico lleg\xF3 tan lejos con estos experimentos..."

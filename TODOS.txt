@@ -1,8 +1,14 @@
 #### Final 20/7 #####
+1. DontDestroyOnLoad
+	Hacer que se guarden los settings de capitulo a capitulo
 
-PENDIENTE:
+2. Dialogos entre personajes
+	Terminar de implementar
+	Agregar dialogos al principio del juego.
+	Antes de cada boss.
+	Al principio y al final de Franco.
 
-1. Ataques nuevos:
+3. Ataques nuevos:
 	Bosque muerto: 
 		1. Dash
 		2. Pisotón
@@ -12,31 +18,16 @@ PENDIENTE:
 		2. Triple dispado (Cabeza)
 		3. Franco: Atacar como Victor + todos los demás
 
-2. DontDestroyOnLoad
-	Hacer que se guarden los settings de capitulo a capitulo
-
-3. Balanceo
-	Vida, ataque y velocidad de todos los enemigos.
-
 4. Escenarios
 	Revelar mapa de a 1 por vez.
 	Hoja del diario en el cuartro del diario revela todo el mapa (en grisado).
 	Revisar Balanceo.
 	(Opcional) agregar más templates
 
+5. Balanceo
+	Vida, ataque y velocidad de todos los enemigos.	
 
-5. Cinemáticas
-	Agregar cinématicas al principio de cada nivel
-	al enfrentar un boss
-	al terminar el juego
-
-
-6. Subir a Itch.io
-
-
-PROCESO:
-
-1. Sonidos (Ataque, muerte, caminata, ataque melee)
+6. Sonidos (Ataque, muerte, caminata, ataque melee)
 	Laboratorio:
 		Deforme
 		Fallido
@@ -51,51 +42,8 @@ PROCESO:
 		Aberración
 		Adefecio
 		Franco
-
-
-2. Dialogos entre personajes
-	Terminar de implementar
-	Agregar dialogos al principio del juego.
-	Antes de cada boss.
-	Al principio y al final de Franco.
-
-
-3. Pantalla de créditos
-	Agregar al menú principal
-	y cuando se gana el juego
-
-
-4. Arte y animaciones
-	- Revisar animaciones de los enemigos del juego.
-		- Deforme
-		- Fallido
-		- Abominación
-
-		- Mancillado
-		- Renacido
-		- Guardian del bosque muerto
-
-		- Aberración
-		- Adefecio
-		- Franco
-
-	- Escenarios.
-		Nivel 1:
-			Props de laboratorio abandonado.
-
-
-FINALIZDOS:
-
-1. Agregar fade out
-	https://www.youtube.com/watch?v=Ox0JCbVIMCQ&t=2s
-
-
-2- Menu de opciones
-	Implementarlo en mnenu de inicio.
-	Implementarlo en el juego.
-
-
-3. Musica:
+		
+7. Musica:
 
         A- Menu de inicio
         B- Pantalla Derrota
@@ -110,3 +58,5 @@ FINALIZDOS:
 	- Laboratorio.
 	- Bosque.
 	- Palacio.
+
+8 subir a itchio

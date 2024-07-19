@@ -10,19 +10,23 @@ using System.Linq;
 public class JournalController : MonoBehaviour
 {
     [Header("UI")]
-    [SerializeField] GameObject journalNotesCounterUI;
     [SerializeField] GameObject panel;
+    [SerializeField] GameObject journalNotesCounterUI;
     [SerializeField] TMP_Text title;
     [SerializeField] TMP_Text text;
     [SerializeField] Image cover;
     [SerializeField] TMP_Text notesCounter;
+    [SerializeField] TMP_Text hudNotesCounter;
 
     [Header("Notas")]
     [SerializeField] List<NoteData> notesList;
 
+    public static List<NoteData> notesListReference;
+
     [Header("Sounds")]
     [SerializeField] AudioClip nextPageAudio;
     [SerializeField] AudioClip openJournalAudio;
+
     private AudioSource audioSource;
 
     public bool hasJournal;
@@ -30,9 +34,20 @@ public class JournalController : MonoBehaviour
     private int currentNote;
 
     private VictorController victorController;
+
+    public class JournalStats
+    {
+        public List<NoteData> notesList;
+        public bool hasJournal;
+        public int currentNote;
+    }
+
     private void OnEnable()
     {
         VictorController.OnPersonajeInstanciado += HandlePersonajeInstanciado;
+        // Hago una copia para no modificar los prefabs
+        notesList = notesList.ConvertAll(note => Instantiate(note));
+        notesListReference = notesList;
     }
     private void OnDisable()
     {
@@ -49,7 +64,7 @@ public class JournalController : MonoBehaviour
     }
     private void HandleJournalNotePicked(int noteId, bool isJournal)
     {
-        if(isJournal)
+        if (isJournal)
         {
             hasJournal = true;
             journalNotesCounterUI.SetActive(true);
@@ -58,23 +73,64 @@ public class JournalController : MonoBehaviour
         {
             notesList[noteId].discovered = true;
             currentNote = noteId;
+            hudNotesCounter.text = $"{notesList.Count(note => note.discovered)} / {notesList.Count}";
 
-            TMP_Text noteCountUIText = journalNotesCounterUI.GetComponentInChildren<TMP_Text>();
-            noteCountUIText.text = $"{notesList.Count(note => note.discovered)} / {notesList.Count}";
-            
             SetPage();
         }
+
+        VictorSettings.Instance.UpdateJournalStats(GetStats());
     }
+
+    public static JournalStats GetDefaultStats()
+    {
+        JournalStats defaultJournalStats = new JournalStats();
+
+        defaultJournalStats.notesList = notesListReference;
+        defaultJournalStats.notesList.ForEach(nota => nota.discovered = false);
+        defaultJournalStats.currentNote = -1;
+        defaultJournalStats.hasJournal = false;
+
+        return defaultJournalStats;
+    }
+
+    private JournalStats GetStats()
+    {
+        var stats = new JournalStats();
+
+        stats.notesList = notesList;
+        stats.currentNote = currentNote;
+        stats.hasJournal = hasJournal;
+
+        return stats;
+    }
+
+    private void SetCurrentStatus()
+    {
+
+        if (VictorSettings.Instance.journalStats == null)
+        {
+            JournalStats currentJournalStats = GetDefaultStats();
+            notesList = currentJournalStats.notesList;
+            hasJournal = currentJournalStats.hasJournal;
+            currentNote = currentJournalStats.currentNote;
+        } else
+        {
+            notesList = VictorSettings.Instance.journalStats.notesList;
+            hasJournal = VictorSettings.Instance.journalStats.hasJournal;
+            currentNote = VictorSettings.Instance.journalStats.currentNote;
+        }
+    }
+
     void Start()
     {
-        // Hago una copia para no modificar los prefabs
-        notesList = notesList.ConvertAll(note => Instantiate(note));
         audioSource = GetComponent<AudioSource>();
-        currentNote = -1;
-        hasJournal = false;
+
+        SetCurrentStatus();
+
         IsJournalOpened = false;
 
-        journalNotesCounterUI.SetActive(false);
+        journalNotesCounterUI.SetActive(hasJournal);
+        hudNotesCounter.text = $"{notesList.Count(note => note.discovered)} / {notesList.Count}";
 
         SetPage();
     }

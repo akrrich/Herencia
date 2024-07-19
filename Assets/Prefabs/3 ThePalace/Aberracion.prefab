@@ -270,21 +270,21 @@ MonoBehaviour:
   attackingClip: {fileID: 7400000, guid: 740e63c4db44b2b4a8c6c67baf10cab8, type: 2}
   dyingClip: {fileID: 7400000, guid: 23c3b315d652e604391a5d42fde9aff5, type: 2}
   deadClip: {fileID: 7400000, guid: 0c8e0cde31e9ad0418c76b257f28e45a, type: 2}
-  maxLife: 10
+  maxLife: 40
   maxShield: 0
   maxMovementSpeed: 10
-  movementSpeed: 4
+  movementSpeed: 5
   maxAttackSpeed: 1
-  attackSpeed: 5
+  attackSpeed: 7
   bullet: {fileID: 4756643611347867595, guid: e3582f0ae99b4894e8eab4b20a2045fd, type: 3}
   bulletSpawner: {fileID: 4459766019140152832}
-  movingSound: {fileID: 0}
-  deathSound: {fileID: 0}
+  movingSound: {fileID: 8300000, guid: ad4ee2dfc950dee4288ee9869e926d7e, type: 3}
+  deathSound: {fileID: 8300000, guid: 107dca3dcb2b2ed4bbb58faa0a01581e, type: 3}
   meleeSound: {fileID: 0}
-  shootSound: {fileID: 0}
-  seekRadius: 10
+  shootSound: {fileID: 8300000, guid: c6b15e6c0fb63c949b4a0837f6f37e92, type: 3}
+  seekRadius: 30
   meleeAttackRadius: 4
-  bulletAttackRadius: 7
+  bulletAttackRadius: 15
   meleeDamage: 5
   attackType: 1
   target: {fileID: 0}

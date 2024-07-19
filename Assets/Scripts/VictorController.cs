@@ -1,9 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
+
 
 public class VictorController : CharacterController
 {    
@@ -33,32 +31,58 @@ public class VictorController : CharacterController
         stats.attackSpeed = attackSpeed;
 
         return stats;
+    }
 
+    public static VictorStats GetDefaultStats()
+    {
+        var stats = new VictorStats();
+
+        stats.maxLife = 20;
+        stats.life = 20;
+        stats.maxShield = 20;
+        stats.shield = 0;
+        stats.maxMovementSpeed = 30;
+        stats.movementSpeed = 10;
+        stats.maxAttackSpeed = 30;
+        stats.attackSpeed = 5;
+
+        return stats;
     }
 
     public delegate void StatsChangedHandler(VictorStats stats);
     public event StatsChangedHandler OnStatsChanged;
-
 
     public delegate void JournalNotePickedHandler(int noteId, bool isJournal);
     public event JournalNotePickedHandler OnJournalNotePicked;
 
     public static System.Action<VictorController> OnPersonajeInstanciado;
 
-
     private MusicController musicController;
 
 
     private void Awake()
     {
-        // DontDestroyOnLoad(gameObject);
         OnPersonajeInstanciado?.Invoke(this);
     }
     // called first
-    
+    /*
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         this.transform.position = GameManager.Instance.startingMap.transform.position;
+
+        print(scene);
+
+        switch (scene.name)
+        {
+            case "Laboratorio":
+                SetDefaultSettings();
+                break;
+
+            case "BosqueMuerto":
+            case "Palacio":
+                LoadCurrentSettings();
+                break;
+        }
     }
 
     void OnEnable()
@@ -70,10 +94,38 @@ public class VictorController : CharacterController
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
+    */
+
+
+    public void MaxLifeShieldDebug()
+    {
+        life = maxLife;
+        shield = maxShield;
+        OnStatsChanged?.Invoke(GetStats());
+    }
+
+    public void MaxStatsDebug()
+    {
+        attackSpeed = maxAttackSpeed;
+        movementSpeed= maxMovementSpeed;
+        OnStatsChanged?.Invoke(GetStats());
+    }
+
+    private void SetCurrentStats()
+    {
+        VictorStats currentStats = VictorSettings.Instance.victorStats;
+        life = currentStats.life;
+        shield = currentStats.shield;
+        movementSpeed = currentStats.movementSpeed;
+        attackSpeed = currentStats.attackSpeed;
+    }
 
     protected override void Start()
     {
         base.Start();
+
+        SetCurrentStats();
+
         OnStatsChanged?.Invoke(GetStats());
 
         musicController = FindObjectOfType<MusicController>();
@@ -95,6 +147,7 @@ public class VictorController : CharacterController
     {
         base.ApplyDamage(damage);
         OnStatsChanged?.Invoke(GetStats());
+        VictorSettings.Instance.UpdateVictorStats(GetStats());
     }
 
     private IEnumerator PickUpColor(Stats type)
@@ -116,6 +169,10 @@ public class VictorController : CharacterController
 
             case Stats.attackSpeed:
                 effectColor = Color.cyan;
+                break;
+
+            case Stats.journalEntry:
+                effectColor = Color.yellow;
                 break;
         }
 
@@ -140,6 +197,7 @@ public class VictorController : CharacterController
 
     internal void PickUpJournalNote(int noteId, bool isJournal)
     {
+        StartCoroutine(PickUpColor(Stats.journalEntry));
         OnJournalNotePicked?.Invoke(noteId, isJournal);
     }
 
@@ -167,6 +225,7 @@ public class VictorController : CharacterController
         }
         StartCoroutine(PickUpColor(stats));
         OnStatsChanged?.Invoke(GetStats());
+        VictorSettings.Instance.UpdateVictorStats(GetStats());
     }
     protected override bool IsAttacking()
     {
@@ -198,7 +257,6 @@ public class VictorController : CharacterController
     {
         CheckVictory();
     }
-
 
     private void OnTriggerStay2D(Collider2D collision)
     {

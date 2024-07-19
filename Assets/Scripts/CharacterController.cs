@@ -66,7 +66,8 @@ public abstract class CharacterController : MonoBehaviour
         LifePoints,
         Shield,
         characterSpeed,
-        attackSpeed
+        attackSpeed,
+        journalEntry
     }
 
     void UpdateStates()
