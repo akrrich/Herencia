@@ -323,7 +323,7 @@ MonoBehaviour:
   attackingClip: {fileID: 7400000, guid: 109da07c283277e40855ee98bc6bad69, type: 2}
   dyingClip: {fileID: 7400000, guid: cb95b66d0ccbde8468e52ec003406da2, type: 2}
   deadClip: {fileID: 7400000, guid: 222a64b2b0da1c248b2010f976115dc3, type: 2}
-  maxLife: 20
+  maxLife: 40
   maxShield: 0
   maxMovementSpeed: 10
   movementSpeed: 4
@@ -338,7 +338,7 @@ MonoBehaviour:
   seekRadius: 20
   meleeAttackRadius: 5
   bulletAttackRadius: 15
-  meleeDamage: 5
+  meleeDamage: 3
   attackType: 2
   target: {fileID: 0}
 --- !u!82 &-5083908576011646989

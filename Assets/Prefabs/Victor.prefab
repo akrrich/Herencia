@@ -702,8 +702,8 @@ MonoBehaviour:
   attackingClip: {fileID: 7400000, guid: cc5125e2a8d628b4396a64da7d8286e6, type: 2}
   dyingClip: {fileID: 7400000, guid: adf035a3d464bb74e83920a8712ef3a7, type: 2}
   deadClip: {fileID: 7400000, guid: e18d7bea5077b0f4e8000298d5d3e5fe, type: 2}
-  maxLife: 20
-  maxShield: 20
+  maxLife: 75
+  maxShield: 25
   maxMovementSpeed: 30
   movementSpeed: 10
   maxAttackSpeed: 30

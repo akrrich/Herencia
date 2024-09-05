@@ -338,7 +338,7 @@ MonoBehaviour:
   seekRadius: 30
   meleeAttackRadius: 5
   bulletAttackRadius: 15
-  meleeDamage: 10
+  meleeDamage: 5
   attackType: 2
   target: {fileID: 0}
 --- !u!82 &-2933734340943309253

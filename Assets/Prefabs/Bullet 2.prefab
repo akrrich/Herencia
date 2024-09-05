@@ -5177,5 +5177,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  damage: 5
+  damage: 3
   splashSound: {fileID: 8300000, guid: 8da5c08c246287e42958291f68cdc288, type: 3}
+  bulletImage: {fileID: 0}
